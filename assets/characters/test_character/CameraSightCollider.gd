@@ -1,6 +1,6 @@
 extends Area3D
 
-var transparent_material : StandardMaterial3D = preload("res://resources/transparent_material.tres")
+var transparent_material : ShaderMaterial = preload("res://resources/transparent_shader.tres")
 
 func _on_body_entered(body):
 	if body.has_node("MeshInstance3D"):
