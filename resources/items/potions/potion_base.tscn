@@ -27,3 +27,10 @@ polygon = PackedVector2Array(22, -29, 27, -23, 46, -4, 49, 1, 50, 17, 48, 23, 38
 [node name="InsideCollision" type="CollisionPolygon2D" parent="RigidBody2D"]
 visible = false
 polygon = PackedVector2Array(21, -25, 42, -4, 46, 1, 48, 10, 47, 20, 40, 30, 32, 37, 23, 40, -25, 40, -34, 38, -41, 31, -46, 25, -50, 17, -49, 3, -43, -5, -33, -16, -18, -30, -15, -32, -12, -41, -11, -62, 9, -62, 9, -42, 12, -33, 19, -27)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(32, -18, 13, -36, 22, -79, -24, -79, -15, -35, -51, -1, -53, 20, -36, 41, 30, 42, 51, 24, 50, 1)
