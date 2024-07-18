@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://boesbgqrelcby"]
+[gd_scene load_steps=5 format=3 uid="uid://boesbgqrelcby"]
 
 [ext_resource type="Script" path="res://assets/characters/test_character/test_character.gd" id="1_kuodl"]
+[ext_resource type="Script" path="res://assets/characters/test_character/CameraJoint.gd" id="2_djb4x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uh6j"]
 
@@ -15,6 +16,11 @@ shape = SubResource("CapsuleShape3D_8uh6j")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_x3be3")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.995506, 0.0946991, 0, -0.0946991, 0.995506, 0, 1.5623, 4.81624)
+[node name="CameraJoint" type="SpringArm3D" parent="."]
+spring_length = 4.0
+script = ExtResource("2_djb4x")
+
+[node name="Camera3D" type="Camera3D" parent="CameraJoint"]
+transform = Transform3D(1, 0, 0, 0, 0.931862, 0.362812, 0, -0.362812, 0.931862, 0, 2.54591, 5.37382)
 current = true
+fov = 80.5313
