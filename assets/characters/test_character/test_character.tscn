@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://boesbgqrelcby"]
+[gd_scene load_steps=8 format=3 uid="uid://boesbgqrelcby"]
 
 [ext_resource type="Script" path="res://assets/characters/test_character/test_character.gd" id="1_kuodl"]
 [ext_resource type="Script" path="res://assets/characters/test_character/CameraJoint.gd" id="2_djb4x"]
+[ext_resource type="Script" path="res://assets/characters/test_character/CameraSightCollider.gd" id="2_gtity"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uh6j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x3be3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mjqdi"]
+height = 5.0
+radius = 1.0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jyo8e"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_kuodl")
@@ -16,11 +23,30 @@ shape = SubResource("CapsuleShape3D_8uh6j")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_x3be3")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.880105, 0.47478, 0, -0.47478, 0.880105, 0, 2.54591, 5.37382)
+current = true
+fov = 80.5313
+
+[node name="CameraSightCollider" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.880105, -0.47478, 0, 0.47478, 0.880105, 0, 0.31071, -5.93828)
+collision_mask = 16
+script = ExtResource("2_gtity")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Camera3D/CameraSightCollider"]
+transform = Transform3D(1, 0, 0, 0, 0.432778, -0.9015, 0, 0.9015, 0.432778, -0.004, 1.4983, 2.88137)
+shape = SubResource("CylinderShape3D_mjqdi")
+
 [node name="CameraJoint" type="SpringArm3D" parent="."]
 spring_length = 4.0
 script = ExtResource("2_djb4x")
 
-[node name="Camera3D" type="Camera3D" parent="CameraJoint"]
-transform = Transform3D(1, 0, 0, 0, 0.931862, 0.362812, 0, -0.362812, 0.931862, 0, 2.54591, 5.37382)
-current = true
-fov = 80.5313
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationTree")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath(".")
+tree_root = SubResource("AnimationNodeStateMachine_jyo8e")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="body_entered" from="Camera3D/CameraSightCollider" to="Camera3D/CameraSightCollider" method="_on_body_entered"]

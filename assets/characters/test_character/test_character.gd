@@ -12,8 +12,8 @@ func _onready() -> void:
 func _physics_process(delta: float) -> void:
 	var veloctiy = Vector3.ZERO
 	
-	velocity.x = Input.get_action_strength("move_left") - Input.get_action_strength("move_right")
-	velocity.z = Input.get_action_strength("move_up") - Input.get_action_strength("move_down")
+	velocity.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	velocity.z = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
 	
 	move_and_slide()
