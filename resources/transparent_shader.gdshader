@@ -2,16 +2,16 @@ shader_type spatial;
 
 render_mode blend_mix, cull_back, depth_draw_opaque, unshaded;
 
-uniform float alpha_value : hint_range(0.0, 1.0, 0.1);
-uniform vec4 albedo_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec3 albedo = vec3(0.9, 0.9, 0.9);
+uniform float alpha_value : hint_range(0.0, 1.0) = 0.5;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	ALBEDO = vec3(0.1, 0.3, 0.8);
-	ALPHA = 0.5;
+	ALBEDO = albedo;
+	ALPHA = alpha_value;
 }
 
 //void light() {

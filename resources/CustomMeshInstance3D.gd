@@ -18,14 +18,12 @@ func remove_overlay_material(material : Material):
 		_update_materials()
 		
 func _update_materials():
-	var combined_material : ShaderMaterial = get_surface_override_material(0)
-	if combined_material:
-		combined_material = combined_material.duplicate()
-	else:
+	var combined_material : ShaderMaterial = get_surface_override_material(0) as ShaderMaterial
+	if not combined_material:
 		combined_material = ShaderMaterial.new()
 	
 	var base_color = combined_material.get_shader_parameter("albedo_color")
-	var alpha_value = combined_material.get_shader_parameter("alpha_color")
+	var alpha_value = combined_material.get_shader_parameter("alpha_value")
 	
 	if base_color == null:
 		base_color = Color(1.0, 1.0, 1.0, 1.0)
@@ -36,16 +34,16 @@ func _update_materials():
 	for overlay in overlay_materials:
 		var overlay_color = overlay.get_shader_parameter("albedo_color")
 		var overlay_alpha = overlay.get_shader_parameter("alpha_value")
-		
+		print(overlay_alpha)
 		if overlay_color == null:
 			overlay_color = Color(1.0, 1.0, 1.0, 1.0)
 			
 		if overlay_alpha == null:
 			overlay_alpha = 1.0
 			
-		print(overlay_color, overlay_alpha)
 		base_color = base_color.lerp(overlay_color, overlay_alpha)
 		alpha_value = max(alpha_value, overlay_alpha)
 
+	print(base_color, alpha_value)
 	combined_material.set_shader_parameter("albedo_color", base_color)
 	combined_material.set_shader_parameter("alpha_value", alpha_value)
