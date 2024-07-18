@@ -29,6 +29,7 @@ fov = 80.5313
 
 [node name="CameraSightCollider" type="Area3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 0.880105, -0.47478, 0, 0.47478, 0.880105, 0, 0.31071, -5.93828)
+visible = false
 collision_mask = 16
 script = ExtResource("2_gtity")
 
