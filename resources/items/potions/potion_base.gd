@@ -1,7 +1,8 @@
-@tool
 extends Node2D
 
 @export var base_class: Resource
 
+@onready var label = $RigidBody2D/Label
+
 func _ready() -> void:
-	add_child(base_class.base_sprite)
+	label.text = base_class.potion_color

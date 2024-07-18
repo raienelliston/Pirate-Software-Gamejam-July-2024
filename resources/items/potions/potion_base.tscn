@@ -2,13 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://c3fh6jjlrts4a" path="res://assets/items/potion_medium.png" id="1_867e1"]
 [ext_resource type="Script" path="res://resources/items/potions/potion_base.gd" id="1_i4ty7"]
-[ext_resource type="Resource" uid="uid://0qbkx2v0atky" path="res://resources/items/potions/healing_potion.tres" id="2_l6tg2"]
+[ext_resource type="Resource" uid="uid://0qbkx2v0atky" path="res://resources/items/potions/potion_types/healing_potion.tres" id="2_m5w44"]
 
 [node name="PotionBase" type="Node2D"]
 script = ExtResource("1_i4ty7")
-base_class = ExtResource("2_l6tg2")
+base_class = ExtResource("2_m5w44")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="Label" type="Label" parent="RigidBody2D"]
+offset_left = -22.0
+offset_top = -35.0
+offset_right = 18.0
+offset_bottom = -12.0
 
 [node name="PotionMedium" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(-1, -18)

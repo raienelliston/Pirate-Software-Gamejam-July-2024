@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=2 format=3 uid="uid://bhhg2j68bha2a"]
+
+[ext_resource type="Script" path="res://resources/items/potions/potion_class.gd" id="1_bfyye"]
+
+[resource]
+script = ExtResource("1_bfyye")
+potion_color = Color(0, 0, 0, 1)
+duration = 0
+radius = 0.0
+potion_type = 0
+potion_attribute = 0
