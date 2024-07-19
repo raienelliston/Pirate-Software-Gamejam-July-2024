@@ -20,6 +20,11 @@ size = Vector3(1, 10, 1)
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("2_io3s0")]
+mouse_filter = 1
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.517527, 0)
 physics_material_override = SubResource("PhysicsMaterial_3sj1m")
@@ -42,10 +47,6 @@ shape = SubResource("BoxShape3D_h0fby")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
 mesh = SubResource("BoxMesh_q02tg")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" parent="CanvasLayer" instance=ExtResource("2_io3s0")]
 
 [node name="TestEnemy" parent="." instance=ExtResource("3_eei3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87067, 0.477835, -0.935265)

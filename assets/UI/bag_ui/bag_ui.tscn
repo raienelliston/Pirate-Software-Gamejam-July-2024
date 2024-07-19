@@ -85,6 +85,7 @@ item = ExtResource("3_grmkw")
 texture = ExtResource("3_5bliy")
 
 [node name="TabButton" type="StaticBody2D" parent="StaticBody2D"]
+input_pickable = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D/TabButton"]
 polygon = PackedVector2Array(-219, -176, -217, 1, -254, -40, -257, -142)

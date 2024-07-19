@@ -20,11 +20,11 @@ func _process(delta):
 func spawn():
 	pass
 
-func take_damage():
+func take_damage(amount: int):
 	pass
 
 func death():
 	pass
 
-func spawn_loot():
-	pass
+func death_loot() -> Array[Item]:
+	return []
