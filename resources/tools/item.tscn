@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp11by0n57dvp"]
+
+[ext_resource type="Script" path="res://resources/tools/item.gd" id="1_bch3n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqg3q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0yxf"]
+
+[node name="Item" type="Node3D"]
+script = ExtResource("1_bch3n")
+
+[node name="ItemSprite" type="Sprite3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ItemAnimations" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tqg3q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_d0yxf")
