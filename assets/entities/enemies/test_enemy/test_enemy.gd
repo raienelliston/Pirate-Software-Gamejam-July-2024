@@ -28,6 +28,8 @@ func take_damage(amount: int) -> void:
 	health -= amount
 
 func on_death():
-	for item in enemy_resource.death_loop():
-		pass
+	for item in enemy_resource.death_loot():
+		var loot_item = item.instantiate()
+		loot_item.global_position = global_position
+		get_tree().get_root().add_child(loot_item)
 	queue_free()

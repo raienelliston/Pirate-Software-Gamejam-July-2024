@@ -2,28 +2,39 @@ extends Node
 
 enum state {opened, closed, undefined}
 
-@export var starting_state: state = state.opened
+@export var starting_state: state = state.closed
 
 var current_state: state
 
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
-	var current_state = starting_state
+	var current_state = state.closed
 
-func _on_tab_button_input_event(viewport, event, shape_idx):
-	if Input.is_action_pressed("primary_action"):
-		if current_state == state.opened:
-			close_menu()
-		else:
-			open_menu()
+func _on_tab_button_mouse_entered():
+	print(current_state)
+	if current_state == state.closed:
+		open_menu()
+
+func _on_full_menu_mouse_exited():
+	if current_state == state.opened:
+		close_menu()
 
 func open_menu():
-	current_state = state.undefined
 	animation_player.play("menu_open")
-	current_state = state.opened
 	
 func close_menu():
-	current_state = state.undefined
 	animation_player.play("menu_close")
-	current_state = state.closed
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "menu_open":
+		current_state = state.opened
+	if anim_name == "menu_close":
+		current_state = state.closed
+
+
+
+
+
+

@@ -11,7 +11,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BagUI" parent="." instance=ExtResource("1_h6n02")]
-offset_left = 998.0
 offset_top = 340.0
-offset_right = 998.0
 offset_bottom = 340.0
