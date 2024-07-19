@@ -10,7 +10,6 @@ var target: Node
 func _ready():
 	add_to_group("enemies")
 
-
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("player_character"):
 		print("found")
@@ -29,7 +28,8 @@ func take_damage(amount: int) -> void:
 
 func on_death():
 	for item in enemy_resource.death_loot():
+		print(item)
 		var loot_item = item.instantiate()
 		loot_item.global_position = global_position
 		get_tree().get_root().add_child(loot_item)
-	queue_free()
+	#queue_free()

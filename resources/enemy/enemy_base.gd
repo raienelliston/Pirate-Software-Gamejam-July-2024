@@ -1,10 +1,10 @@
 class_name Enemy
-extends Resource
+extends LootGenerator
 
 @export_group("Attributes")
 @export var starting_health: int = 10
 @export var speed: int = 10
-@export var tier: int = 1
+@export var enemy_tier: int = 1
 
 @export_group("Lootpool")
 @export var avg_loot_amount: float = 1
@@ -27,4 +27,5 @@ func death():
 	pass
 
 func death_loot() -> Array[Item]:
-	return []
+	var loot = generate_tier_1(avg_loot_amount)
+	return loot

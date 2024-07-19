@@ -10,11 +10,10 @@ var current_state: state
 
 func _ready():
 	var current_state = state.closed
-
-func _on_tab_button_mouse_entered():
+	
+func _on_full_menu_mouse_entered():
 	print(current_state)
-	if current_state == state.closed:
-		open_menu()
+	open_menu()
 
 func _on_full_menu_mouse_exited():
 	if current_state == state.opened:
@@ -32,6 +31,8 @@ func _on_animation_player_animation_finished(anim_name):
 		current_state = state.opened
 	if anim_name == "menu_close":
 		current_state = state.closed
+
+
 
 
 

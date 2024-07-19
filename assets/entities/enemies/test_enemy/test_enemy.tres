@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_5ukr3")
-starting_health = 10
+starting_health = 2
 speed = 10
 tier = 1
 avg_loot_amount = 1.0
