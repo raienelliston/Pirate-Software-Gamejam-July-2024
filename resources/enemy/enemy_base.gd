@@ -28,4 +28,5 @@ func death():
 
 func death_loot() -> Array[Item]:
 	var loot = generate_tier_1(avg_loot_amount)
+	print(loot)
 	return loot

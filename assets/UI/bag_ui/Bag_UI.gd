@@ -11,11 +11,12 @@ var current_state: state
 func _ready():
 	var current_state = state.closed
 	
-func _on_full_menu_mouse_entered():
+func _on_menu_body_mouse_entered():
 	print(current_state)
 	open_menu()
 
-func _on_full_menu_mouse_exited():
+func _on_menu_body_mouse_exited():
+	print(current_state)
 	if current_state == state.opened:
 		close_menu()
 
