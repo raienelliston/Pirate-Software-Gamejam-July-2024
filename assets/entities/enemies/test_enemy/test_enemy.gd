@@ -12,7 +12,8 @@ func _on_player_detector_body_entered(body):
 func _process(delta):
 	velocity = Vector3.ZERO
 	if not target == null:
-		print(target.global_transform_origin())
+		#print(target.global_transform_origin())
+		pass
 
 func death():
 	pass
