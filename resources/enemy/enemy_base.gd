@@ -26,7 +26,7 @@ func take_damage(amount: int):
 func death():
 	pass
 
-func death_loot() -> Array[Item]:
+func death_loot():
 	var loot = generate_tier_1(avg_loot_amount)
 	print(loot)
 	return loot

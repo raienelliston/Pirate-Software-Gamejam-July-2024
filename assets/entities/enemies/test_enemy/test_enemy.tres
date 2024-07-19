@@ -6,7 +6,11 @@
 script = ExtResource("1_5ukr3")
 starting_health = 2
 speed = 10
-tier = 1
+enemy_tier = 1
 avg_loot_amount = 1.0
 loot_tier = 1
 specific_loot = Array[Resource("res://resources/items/item_class.gd")]([])
+id = ""
+description = ""
+type = 0
+tier = 0
