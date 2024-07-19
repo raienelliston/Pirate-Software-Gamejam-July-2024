@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://yltc7rn30eno"]
+[gd_scene load_steps=6 format=3 uid="uid://yltc7rn30eno"]
 
 [ext_resource type="Script" path="res://assets/entities/enemies/test_enemy/test_enemy.gd" id="1_tesrk"]
+[ext_resource type="Resource" uid="uid://crv46i686fyfy" path="res://assets/entities/enemies/test_enemy/test_enemy.tres" id="2_ryf4b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pl8oj"]
 
@@ -11,6 +12,7 @@ radius = 5.0
 
 [node name="TestEnemy" type="CharacterBody3D"]
 script = ExtResource("1_tesrk")
+resource = ExtResource("2_ryf4b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_pl8oj")

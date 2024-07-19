@@ -1,8 +1,11 @@
 extends CharacterBody3D
 
-@export var speed: int = 10
+@export var resource: Resource
 
 var target: Node
+
+func _ready():
+	add_to_group("enemies")
 
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("player_character"):
@@ -12,8 +15,8 @@ func _on_player_detector_body_entered(body):
 func _process(delta):
 	velocity = Vector3.ZERO
 	if not target == null:
-		#print(target.global_transform_origin())
 		pass
+	move_and_slide()
 
 func death():
 	pass

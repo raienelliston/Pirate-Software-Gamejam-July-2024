@@ -8,7 +8,6 @@ enum Type {POTION, MATERIAL, HERBS}
 @export var description: String
 @export var type: Type
 @export var tier: int
-#@export var texture: 
 
 var item_data = {}
 

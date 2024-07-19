@@ -7,7 +7,7 @@ extends Node2D
 var selected = false
 
 func _ready() -> void:
-	#label.text = str(base_class.potion_color)
+	label.text = str(base_class["potion_color"])
 	pass
 
 func _process(delta):
