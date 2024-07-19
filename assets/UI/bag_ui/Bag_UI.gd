@@ -32,11 +32,3 @@ func _on_animation_player_animation_finished(anim_name):
 		current_state = state.opened
 	if anim_name == "menu_close":
 		current_state = state.closed
-
-
-
-
-
-
-
-

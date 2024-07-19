@@ -5,6 +5,7 @@ enum PotionType {OFFENCE, SUPPORT}
 enum PotionAttribute {FIRE, ICE, LIGHT}
 
 @export_category("Appearance")
+@export var texture: Texture
 @export var potion_color: Color
 
 

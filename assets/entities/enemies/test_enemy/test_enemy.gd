@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
+signal spawned_item(item, position)
+
 @export var resource: Resource
 
 var target: Node
-
-signal spawned_item(item, position)
+const ITEM = preload("res://resources/tools/item.tscn")
 
 @onready var enemy_resource = resource.duplicate()
 @onready var health = enemy_resource["starting_health"]
@@ -32,7 +33,8 @@ func on_death():
 	for item in enemy_resource.death_loot():
 		print(item)
 		spawned_item.emit(item, global_position)
-		#var loot_item = item.instantiate()
-		#loot_item.global_position = global_position
-		#get_tree().get_root().add_child(loot_item)
+		var loot_item = ITEM.instantiate()
+		loot_item.item_resource = item_library["items"][item]
+		loot_item.global_position = global_position
+		get_tree().get_root().add_child(loot_item)
 	queue_free()

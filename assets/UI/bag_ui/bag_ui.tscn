@@ -72,6 +72,7 @@ script = ExtResource("1_epbh2")
 
 [node name="MenuBody" type="StaticBody2D" parent="."]
 position = Vector2(370, 0)
+input_pickable = true
 constant_linear_velocity = Vector2(370, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuBody"]

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://0qbkx2v0atky"]
 
-[ext_resource type="PackedScene" uid="uid://kgbcplro3rh5" path="res://resources/items/potions/potion_base.tscn" id="1_m580x"]
 [ext_resource type="Script" path="res://resources/items/potions/potion_class.gd" id="1_v8tj7"]
+[ext_resource type="Texture2D" uid="uid://cvl5md2sqtdvm" path="res://assets/ui/Test_Bottle.png" id="2_15dqr"]
 
 [resource]
 script = ExtResource("1_v8tj7")
-base_sprite = ExtResource("1_m580x")
+texture = ExtResource("2_15dqr")
 potion_color = Color(0.811765, 0, 0, 1)
 duration = 0
 radius = 0.0
