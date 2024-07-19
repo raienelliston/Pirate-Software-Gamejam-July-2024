@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://yltc7rn30eno"]
+
+[ext_resource type="Script" path="res://assets/entities/enemies/test_enemy/test_enemy.gd" id="1_tesrk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pl8oj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xpouf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tir8j"]
+radius = 5.0
+
+[node name="TestEnemy" type="CharacterBody3D"]
+script = ExtResource("1_tesrk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pl8oj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xpouf")
+
+[node name="PlayerDetector" type="Area3D" parent="."]
+visible = false
+
+[node name="DetectionArea" type="CollisionShape3D" parent="PlayerDetector"]
+shape = SubResource("SphereShape3D_tir8j")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

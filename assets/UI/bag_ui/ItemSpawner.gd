@@ -15,7 +15,8 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("primary_action"):
-		spawn_item(pool[rng.randi_range(0, 1)])
+		#spawn_item(pool[rng.randi_range(0, 1)])
+		pass
 	
 func spawn_item(item_name: Resource) -> void:
 	var instance = item.instantiate()

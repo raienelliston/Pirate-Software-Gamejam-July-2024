@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://vx2uab7f1jk5"]
+[gd_scene load_steps=9 format=3 uid="uid://vx2uab7f1jk5"]
 
 [ext_resource type="PackedScene" uid="uid://boesbgqrelcby" path="res://assets/characters/test_character/test_character.tscn" id="1_po36l"]
 [ext_resource type="PackedScene" uid="uid://c3vsdx7xfjfh0" path="res://scenes/ui/dungeon_ui/dungeon_ui.tscn" id="2_io3s0"]
+[ext_resource type="PackedScene" uid="uid://yltc7rn30eno" path="res://assets/entities/enemies/test_enemy/test_enemy.tscn" id="3_eei3m"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3sj1m"]
 
@@ -45,3 +46,6 @@ mesh = SubResource("BoxMesh_q02tg")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("2_io3s0")]
+
+[node name="TestEnemy" parent="." instance=ExtResource("3_eei3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87067, 0.477835, -0.935265)

@@ -6,8 +6,8 @@ extends CharacterBody3D
 @export var time_to_fall := 0.4
 @export var gravity := 50.0
 
-func _onready() -> void:
-	pass
+func _ready() -> void:
+	add_to_group("player_character")
 	
 func _physics_process(delta: float) -> void:
 	var veloctiy = Vector3.ZERO
