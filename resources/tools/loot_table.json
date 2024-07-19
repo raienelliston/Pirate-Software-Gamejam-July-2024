@@ -1,0 +1,26 @@
+[
+	{
+		"ID": "10001",
+		"Name": "Healing Potion",
+		"Category": "Potion",
+		"Type": "Potion",
+		"Tier 1 Weight": "10",
+		"Tier 2 Weight": "10",
+		"Tier 3 Weight": "10",
+		"Tier 1 Percent": "0.5",
+		"Tier 2 Percent": "0.5",
+		"Tier 3 Percent": "0.4"
+	},
+	{
+		"ID": "10002",
+		"Name": "Swiftness Potion",
+		"Category": "Potion",
+		"Type": "Potion",
+		"Tier 1 Weight": "10",
+		"Tier 2 Weight": "10",
+		"Tier 3 Weight": "15",
+		"Tier 1 Percent": "0.5",
+		"Tier 2 Percent": "0.5",
+		"Tier 3 Percent": "0.6"
+	}
+]
