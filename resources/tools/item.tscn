@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp11by0n57dvp"]
+[gd_scene load_steps=5 format=3 uid="uid://dp11by0n57dvp"]
 
 [ext_resource type="Script" path="res://resources/tools/item.gd" id="1_bch3n"]
+[ext_resource type="Script" path="res://resources/tools/ItemStateMachine.gd" id="2_j17wk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqg3q"]
 
@@ -20,3 +21,6 @@ sprite_frames = SubResource("SpriteFrames_tqg3q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d0yxf")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_j17wk")
