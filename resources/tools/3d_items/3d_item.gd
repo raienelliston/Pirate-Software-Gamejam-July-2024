@@ -15,7 +15,7 @@ const _2D_ITEM = preload("res://resources/tools/2d_items/2d_item.tscn")
 
 @onready var FSM = $FiniteStateMachine
 @onready var idleState = $FiniteStateMachine/IdleState
-@onready var clickedState = $FiniteStateMachine/ClickedState
+@onready var ClickedState = $FiniteStateMachine/ClickedState
 @onready var draggingState = $FiniteStateMachine/DraggingState
 @onready var droppedState = $FiniteStateMachine/DroppedState
 
@@ -24,6 +24,8 @@ func _ready():
 	
 	# Connect state machine connections
 	GlobalSignals.connect("PrimaryClick", onClick)
+	ClickedState.connect("StartDrag", _startDrag)
+	droppedState.connect("IdleStarted", _startIdle)
 	
 	# Set appearnce parameters
 	item_sprite.texture = item_resource["texture"]
@@ -62,3 +64,10 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 			print("alsdkjfasdf")
 		if Input.is_action_just_released("primary_action"):
 			print("released")
+			
+			
+func _startDrag():
+	FSM.change_state(draggingState)
+	
+func _startIdle():
+	FSM.change_state(idleState)

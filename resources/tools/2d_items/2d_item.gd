@@ -2,7 +2,7 @@ extends Node2D
 
 @export var resource: Resource
 @export var texture: Texture
-#@export var starting_state: 
+@export var starting_state: State
 
 func _ready():
 	pass
