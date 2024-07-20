@@ -21,14 +21,3 @@ func _enter_state():
 func _exit_state():
 	set_physics_process(false)
 	sprite.visible = true
-	
-func _physics_process(delta):
-	
-	# Add logic for sticking the item to the cursor
-	if not Input.is_action_pressed("primary_action"):
-		set_physics_process(false)
-		sprite.visible = true
-		DropStarted.emit()
-
-	if animationPlayer.has_animation("dragging"):
-		animationPlayer.play("dragging")

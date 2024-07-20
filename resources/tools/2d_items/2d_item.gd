@@ -43,4 +43,4 @@ func _startIdle():
 	FSM.change_state(idle_state)
 	
 func _startClick():
-	FSM.change_state(click_state)
+	FSM.change_state(clicked_state)

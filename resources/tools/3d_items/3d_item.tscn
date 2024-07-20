@@ -40,8 +40,9 @@ script = ExtResource("5_wgiec")
 sprite = NodePath("../../ItemSprite")
 animationPlayer = NodePath("../../AnimationPlayer")
 
-[node name="DroppedState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animationPlayer")]
+[node name="DroppedState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("sprite", "animationPlayer")]
 script = ExtResource("6_rkbf7")
+sprite = NodePath("../../ItemSprite")
 animationPlayer = NodePath("../../AnimationPlayer")
 
 [connection signal="input_event" from="ItemSprite/Area3D" to="FiniteStateMachine/IdleState" method="_on_area_3d_input_event"]

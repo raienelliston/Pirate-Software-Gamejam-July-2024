@@ -1,10 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bllhy8imst05a"]
+[gd_scene load_steps=13 format=3 uid="uid://bllhy8imst05a"]
 
 [ext_resource type="Script" path="res://assets/ui/bag_ui/bag_ui.gd" id="1_epbh2"]
 [ext_resource type="Texture2D" uid="uid://d0suxuwek8gap" path="res://assets/ui/bag_ui/bag_menu.png" id="2_2nmya"]
 [ext_resource type="Texture2D" uid="uid://b1xp1xau4u7ud" path="res://assets/ui/bag_ui/bag.png" id="3_5bliy"]
 [ext_resource type="Script" path="res://assets/ui/bag_ui/ItemSpawner.gd" id="3_bcnv6"]
 [ext_resource type="PackedScene" uid="uid://kgbcplro3rh5" path="res://resources/items/potions/potion_base.tscn" id="3_grmkw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k8u3w"]
+animation = &"menu_close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ntny1"]
+animation = &"menu_open"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_uxr1i"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_k8u3w")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_ntny1")
+blend_point_1/pos = 1.0
 
 [sub_resource type="Animation" id="Animation_iohek"]
 length = 0.001
@@ -102,7 +114,15 @@ item = ExtResource("3_grmkw")
 [node name="Bag" type="Sprite2D" parent="MenuBody/StaticBody2D2"]
 texture = ExtResource("3_5bliy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="MenuBody"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendSpace1D_uxr1i")
+advance_expression_base_node = NodePath("../AnimationPlayer")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blend_position = -0.924843
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuBody"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_aktlx")
 }
@@ -110,4 +130,4 @@ libraries = {
 [connection signal="mouse_entered" from="MenuBody" to="." method="_on_menu_body_mouse_entered"]
 [connection signal="mouse_exited" from="MenuBody" to="." method="_on_menu_body_mouse_exited"]
 [connection signal="body_entered" from="MenuBody/ItemDetector" to="." method="_on_item_detector_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="MenuBody/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
