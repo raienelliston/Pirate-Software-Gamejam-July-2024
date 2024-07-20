@@ -3,6 +3,7 @@ extends State
 
 signal DropStarted
 
+@onready var sprite_2d = $"../../Sprite2D"
 @export var animationPlayer: AnimationPlayer
 
 func _ready():
@@ -16,6 +17,8 @@ func _exit_state():
 	
 func _physics_process(delta):
 	# Add logic for sticking the item to the cursor
+	
+	sprite_2d.global_position = lerp(sprite_2d.global_position, get_viewport().get_mouse_position(), 25 * delta)
 	
 	if not Input.get_action_strength("primary_action"):
 		

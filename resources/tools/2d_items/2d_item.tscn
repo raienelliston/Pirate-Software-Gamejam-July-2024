@@ -7,24 +7,25 @@
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_dragging_state.gd" id="5_ddy57"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_idle_state.gd" id="6_li7k0"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_b070o"]
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_38xus"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b070o"]
 
 [node name="Item" type="Node2D"]
 script = ExtResource("1_vfnky")
+temp = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-shape = SubResource("SegmentShape2D_b070o")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
 shape = SubResource("SegmentShape2D_38xus")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("SegmentShape2D_b070o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 

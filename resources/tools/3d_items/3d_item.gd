@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-enum ItemStates {IDLE, CLICKED, DRAGGING, DROPPED}
+signal KilledTemp(killed)
 
 @export var item_resource: Resource
 
@@ -9,7 +9,6 @@ const _2D_ITEM = preload("res://resources/tools/2d_items/2d_item.tscn")
 
 @onready var item_sprite = $ItemSprite
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
-@onready var current_state: ItemStates = ItemStates.IDLE
 @onready var area_3d = $Area3D
 
 @onready var FSM = $FiniteStateMachine
@@ -25,8 +24,8 @@ func _ready():
 	ClickedState.connect("DragStarted", _startDrag)
 	DraggingState.connect("DropStarted", _startDrop)
 	DroppedState.connect("IdleStarted", _startIdle)
-	
 	DraggingState.connect("ChangedTo2D", changeTo2D)
+	connect("KilledTemp", tempOutcome)
 	
 	# Set appearnce parameters
 	item_sprite.texture = item_resource["texture"]
@@ -54,8 +53,15 @@ func changeTo2D(dropSignal: Signal):
 	_2d_item.starting_state = InitialDraggingState
 	position = global_position
 	_2d_item.global_position = CharacterCamera.get_camera_position(position)
+	_2d_item.killSignal = KilledTemp
 	get_tree().get_root().add_child(_2d_item)
 	queue_free()
+
+func tempOutcome(killed: bool):
+	if killed:
+		FSM.change_state(DroppedState)
+	else:
+		queue_free()
 
 func _startClick():
 	FSM.change_state(ClickedState)

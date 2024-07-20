@@ -7,6 +7,7 @@ signal ClickStarted
 @export var animationPlayer: AnimationPlayer
 
 func _ready():
+	print("2d idle")
 	pass
 	
 

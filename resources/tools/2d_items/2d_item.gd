@@ -5,7 +5,7 @@ extends Node2D
 @export var starting_state: State
 @export var temp: bool = true
 
-var dropSignal: Signal
+var killSignal: Signal
 
 @onready var FSM = $FSM
 @onready var clicked_state = $FSM/ClickedState
@@ -14,7 +14,10 @@ var dropSignal: Signal
 @onready var idle_state = $FSM/IdleState
 
 func _ready():
-	dropped_state.connect("DropStarted", _startDrop)
+	dragging_state.connect("DropStarted", _startDrop)
+	clicked_state.connect("DragStarted", _startDrag)
+	dropped_state.connect("IdleStarted", _startIdle)
+	idle_state.connect("ClickStarted", _startClick)
 	
 func _process(delta):
 	pass
@@ -22,7 +25,7 @@ func _process(delta):
 func makePermanent():
 	if temp:
 		temp = false
-		FSM.change_state("dragging_state")
+		FSM.change_state(dragging_state)
 
 func _startDrop():
 	# If it's permenent
@@ -30,5 +33,14 @@ func _startDrop():
 		FSM.change_state(dropped_state)
 		
 	# If it's temperary
-	dropSignal.emit()
+	killSignal.emit()
 	queue_free()
+	
+func _startDrag():
+	FSM.change_state(dragging_state)
+	
+func _startIdle():
+	FSM.change_state(idle_state)
+	
+func _startClick():
+	FSM.change_state(click_state)
