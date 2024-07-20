@@ -4,6 +4,11 @@ extends Node2D
 @export var texture: Texture
 @export var starting_state: State
 
+@onready var clicked_state = $FSM/ClickedState
+@onready var dropped_state = $FSM/DroppedState
+@onready var dragging_state = $FSM/DraggingState
+@onready var idle_state = $FSM/IdleState
+
 func _ready():
 	pass
 	
