@@ -51,8 +51,9 @@ func onSpawn():
 func changeTo2D(dropSignal: Signal):
 	var _2d_item = _2D_ITEM.instantiate()
 	_2d_item.item_resource = item_resource
-	_2d_item.starting_state = "InitialDragging"
-	_2d_item.global_position = global_position
+	_2d_item.starting_state = InitialDraggingState
+	position = global_position
+	_2d_item.global_position = CharacterCamera.get_camera_position(position)
 	get_tree().get_root().add_child(_2d_item)
 	queue_free()
 

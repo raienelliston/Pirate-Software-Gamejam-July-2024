@@ -4,7 +4,8 @@ extends Node
 @export var state: State
 
 func _ready():
-	change_state(state)
+	if state:
+		change_state(state)
 	
 func change_state(new_state: State):
 	if state is State:

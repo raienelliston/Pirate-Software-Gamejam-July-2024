@@ -9,7 +9,6 @@ signal ClickStarted
 var active: bool
 
 func _enter_state():
-	print("idle state")
 	active = true
 
 func _exit_state():

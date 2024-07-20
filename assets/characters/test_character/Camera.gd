@@ -1,6 +1,5 @@
+class_name Camera
 extends Camera3D
-
-signal PrimaryClick(position: Vector3)
 
 var ray_length: int
 
@@ -10,19 +9,5 @@ var ray_length: int
 func _ready():
 	pass
 	
-func _input(event):
-	
-	
-	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
-		#var origin = ray_cast_3d.global_transform.origin
-		#var collision_point = ray_cast_3d.get_collision_point()
-		#var distance = origin.distance_to(collision_point)
-		#
-		#var from = camera_3d.project_ray_origin(event.position)
-		#var to = from + camera_3d.project_ray_normal(event.position) * distance
-		#print(to)
-		#GlobalSignals.emitPrimaryClick(to)
-		
-		var origin = ray_cast_3d.global_transform.origin
-		var collision_point = ray_cast_3d.get_collision_point()
-		var distance = origin.distance_to(collision_point)
+func get_camera_position(pos: Vector3):
+	return camera_3d.unproject_position(pos)

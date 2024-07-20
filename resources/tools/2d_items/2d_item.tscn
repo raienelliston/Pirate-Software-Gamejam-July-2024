@@ -31,14 +31,18 @@ shape = SubResource("SegmentShape2D_38xus")
 [node name="FSM" type="Node" parent="."]
 script = ExtResource("2_go2vl")
 
-[node name="ClickedState" type="Node" parent="FSM"]
+[node name="ClickedState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("3_whrbn")
+animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="DroppedState" type="Node" parent="FSM"]
+[node name="DroppedState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("4_162s3")
+animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="DraggingState" type="Node" parent="FSM"]
+[node name="DraggingState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("5_ddy57")
+animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="IdleState" type="Node" parent="FSM"]
+[node name="IdleState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("6_li7k0")
+animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")

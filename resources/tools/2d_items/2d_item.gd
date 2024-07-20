@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var resource: Resource
+@export var item_resource: Resource
 @export var texture: Texture
 @export var starting_state: State
 @export var temp: bool = true
@@ -14,7 +14,7 @@ var dropSignal: Signal
 @onready var idle_state = $FSM/IdleState
 
 func _ready():
-	pass
+	dropped_state.connect("DropStarted", _startDrop)
 	
 func _process(delta):
 	pass

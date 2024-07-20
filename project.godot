@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 GlobalSignals="*res://resources/tools/global_signals.gd"
+CharacterCamera="*res://assets/characters/test_character/Camera.gd"
 
 [input]
 
