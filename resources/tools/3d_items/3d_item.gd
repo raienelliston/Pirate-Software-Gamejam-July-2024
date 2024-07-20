@@ -8,7 +8,16 @@ enum ItemStates {IDLE, CLICKED, DRAGGING, DROPPED}
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 @onready var current_state: ItemStates = ItemStates.IDLE
 
+@onready var FSM = $FiniteStateMachine
+@onready var idleState = $FiniteStateMachine/IdleState
+@onready var clickedState = $FiniteStateMachine/ClickedState
+@onready var draggingState = $FiniteStateMachine/DraggingState
+@onready var droppedState = $FiniteStateMachine/DroppedState
+
 func _ready():
+	
+	# Connect state machine connections
+	
 	
 	# Set appearnce parameters
 	item_sprite.texture = item_resource["texture"]
