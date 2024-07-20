@@ -22,7 +22,7 @@ func _ready():
 	
 	# Connect state machine connections
 	IdleState.connect("ClickStarted", _startClick)
-	ClickedState.connect("StartDrag", _startDrag)
+	ClickedState.connect("DragStarted", _startDrag)
 	DraggingState.connect("DropStarted", _startDrop)
 	DroppedState.connect("IdleStarted", _startIdle)
 	

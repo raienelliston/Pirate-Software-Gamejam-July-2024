@@ -15,12 +15,12 @@ script = ExtResource("1_sx2s0")
 
 [node name="ItemSprite" type="Sprite3D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Area3D" type="Area3D" parent="ItemSprite"]
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemSprite/Area3D"]
 shape = SubResource("BoxShape3D_mfknb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("2_nacfm")
@@ -28,19 +28,20 @@ state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("detection_area", "animationPlayer")]
 script = ExtResource("3_guxvc")
-detection_area = NodePath("../../Area3D")
+detection_area = NodePath("../../ItemSprite/Area3D")
 animationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="ClickedState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("4_bub3y")
 animationPlayer = NodePath("../../AnimationPlayer")
 
-[node name="DraggingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animationPlayer")]
+[node name="DraggingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("sprite", "animationPlayer")]
 script = ExtResource("5_wgiec")
+sprite = NodePath("../../ItemSprite")
 animationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="DroppedState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("6_rkbf7")
 animationPlayer = NodePath("../../AnimationPlayer")
 
-[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="input_event" from="ItemSprite/Area3D" to="FiniteStateMachine/IdleState" method="_on_area_3d_input_event"]
