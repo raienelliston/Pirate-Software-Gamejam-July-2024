@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dp11by0n57dvp"]
 
-[ext_resource type="Script" path="res://resources/tools/3dItem.gd" id="1_7bbu4"]
+[ext_resource type="Script" path="res://resources/tools/3d_items/Item.gd" id="1_a2q4e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqg3q"]
 
@@ -8,7 +8,7 @@
 size = Vector3(2, 2, 2)
 
 [node name="Item" type="Node3D"]
-script = ExtResource("1_7bbu4")
+script = ExtResource("1_a2q4e")
 
 [node name="ItemSprite" type="Sprite3D" parent="."]
 
@@ -21,5 +21,7 @@ sprite_frames = SubResource("SpriteFrames_tqg3q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_mfknb")
+
+[node name="Node" type="Node" parent="."]
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
