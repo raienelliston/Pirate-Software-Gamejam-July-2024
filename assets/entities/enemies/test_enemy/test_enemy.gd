@@ -5,7 +5,7 @@ signal spawned_item(item, position)
 @export var resource: Resource
 
 var target: Node
-const ITEM = preload("res://resources/tools/item.tscn")
+const ITEM = preload("res://resources/tools/3d_items/3d_item.tscn")
 
 @onready var enemy_resource = resource.duplicate()
 @onready var health = enemy_resource["starting_health"]

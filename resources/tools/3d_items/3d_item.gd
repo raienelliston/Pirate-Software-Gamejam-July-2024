@@ -28,16 +28,13 @@ func _ready():
 	print(width, height)
 	var shape = RectangleShape2D.new()
 	shape.size = Vector2(width, height)
-	collision_shape_2d.set_shape(shape)
+	#collision_shape_2d.set_shape(shape)
 	
 	onSpawn()
 
 func _process(delta):
 	
-	# Drop Item
-	if current_state == ItemStates.DRAGGING:
-		if Input.is_action_just_released("primary_action"):
-			pass
+	pass
 
 func onSpawn():
 	pass
@@ -47,5 +44,7 @@ func changeTo2D():
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouse:
-		if Input.is_action_just_pressed("primary_action") and current_state == ItemStates.IDLE:
-			pass
+		if Input.is_action_just_pressed("primary_action"):
+			print("alsdkjfasdf")
+		if Input.is_action_just_released("primary_action"):
+			print("released")
