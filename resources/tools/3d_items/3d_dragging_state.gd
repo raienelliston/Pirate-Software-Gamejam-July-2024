@@ -2,6 +2,8 @@ class_name ThreeDDraggingState
 extends State
 
 signal DropStarted
+signal ChangedTo2D(dropSignal: Signal)
+signal DroppedItem
 
 @export var sprite: Sprite3D
 @export var animationPlayer: AnimationPlayer
@@ -14,6 +16,7 @@ func _ready():
 func _enter_state():
 	print("drag state")
 	sprite.visible = false
+	ChangedTo2D.emit(DroppedItem)
 	set_physics_process(true)
 
 func _exit_state():

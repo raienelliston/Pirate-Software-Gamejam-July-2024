@@ -3,6 +3,7 @@ extends Node2D
 @export var resource: Resource
 @export var texture: Texture
 @export var starting_state: State
+@export var dropSignal: Signal
 
 @onready var clicked_state = $FSM/ClickedState
 @onready var dropped_state = $FSM/DroppedState

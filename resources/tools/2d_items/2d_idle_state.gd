@@ -7,7 +7,7 @@ signal ClickStarted
 @export var animationPlayer: AnimationPlayer
 
 func _ready():
-	GlobalSignals.connect("PrimaryClick", onClick)
+	pass
 	
 
 func onClick(vector: Vector3):

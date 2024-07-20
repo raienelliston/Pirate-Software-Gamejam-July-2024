@@ -26,6 +26,8 @@ func _ready():
 	DraggingState.connect("DropStarted", _startDrop)
 	DroppedState.connect("IdleStarted", _startIdle)
 	
+	DraggingState.connect("ChangedTo2D", changeTo2D)
+	
 	# Set appearnce parameters
 	item_sprite.texture = item_resource["texture"]
 	#var width = item_sprite.texture.get_width()
@@ -46,10 +48,10 @@ func _ready():
 func onSpawn():
 	pass
 
-func changeTo2D():
+func changeTo2D(dropSignal: Signal):
 	var _2d_item = _2D_ITEM.instantiate()
 	_2d_item.item_resource = item_resource
-	#_2d_item.starting_state = 
+	_2d_item.starting_state = "InitialDragging"
 	_2d_item.global_position = global_position
 	get_tree().get_root().add_child(_2d_item)
 	queue_free()
