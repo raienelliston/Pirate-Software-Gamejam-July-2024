@@ -16,6 +16,7 @@ enum ItemStates {IDLE, CLICKED, DRAGGING, DROPPED}
 
 func _ready():
 	
+	
 	# Connect state machine connections
 	
 	
