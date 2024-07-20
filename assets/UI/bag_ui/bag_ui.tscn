@@ -109,4 +109,5 @@ libraries = {
 
 [connection signal="mouse_entered" from="MenuBody" to="." method="_on_menu_body_mouse_entered"]
 [connection signal="mouse_exited" from="MenuBody" to="." method="_on_menu_body_mouse_exited"]
+[connection signal="body_entered" from="MenuBody/ItemDetector" to="." method="_on_item_detector_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
