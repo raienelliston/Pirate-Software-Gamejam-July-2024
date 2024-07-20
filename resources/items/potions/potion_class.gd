@@ -7,6 +7,8 @@ enum PotionAttribute {FIRE, ICE, LIGHT}
 @export_category("Appearance")
 @export var texture: Texture
 @export var potion_color: Color
+@export var width: int
+@export var height: int
 
 
 @export_category("Effect Stats")

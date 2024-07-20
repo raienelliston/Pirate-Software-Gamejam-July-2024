@@ -12,25 +12,28 @@ const _2D_ITEM = preload("res://resources/tools/2d_items/2d_item.tscn")
 @onready var current_state: ItemStates = ItemStates.IDLE
 @onready var area_3d = $Area3D
 
-
 @onready var FSM = $FiniteStateMachine
-@onready var idleState = $FiniteStateMachine/IdleState
+@onready var IdleState = $FiniteStateMachine/IdleState
 @onready var ClickedState = $FiniteStateMachine/ClickedState
-@onready var draggingState = $FiniteStateMachine/DraggingState
-@onready var droppedState = $FiniteStateMachine/DroppedState
+@onready var DraggingState = $FiniteStateMachine/DraggingState
+@onready var DroppedState = $FiniteStateMachine/DroppedState
 
 func _ready():
 	
-	
 	# Connect state machine connections
-	GlobalSignals.connect("PrimaryClick", onClick)
+	IdleState.connect("ClickStarted", _startClick)
 	ClickedState.connect("StartDrag", _startDrag)
-	droppedState.connect("IdleStarted", _startIdle)
+	DraggingState.connect("DropStarted", _startDrop)
+	DroppedState.connect("IdleStarted", _startIdle)
 	
 	# Set appearnce parameters
 	item_sprite.texture = item_resource["texture"]
-	var width = item_sprite.texture.get_width()
-	var height = item_sprite.texture.get_height()
+	#var width = item_sprite.texture.get_width()
+	#var height = item_sprite.texture.get_height()
+	
+	#TEMP
+	var width = item_resource["width"]
+	var height = item_resource["height"]
 	
 	# Set collision_shape
 	print(width, height)
@@ -39,9 +42,6 @@ func _ready():
 	#collision_shape_2d.set_shape(shape)
 	
 	onSpawn()
-
-func _process(delta):
-	pass
 
 func onSpawn():
 	pass
@@ -53,21 +53,15 @@ func changeTo2D():
 	_2d_item.global_position = global_position
 	get_tree().get_root().add_child(_2d_item)
 	queue_free()
-	
-func onClick(position: Vector3):
-	pass
 
+func _startClick():
+	FSM.change_state(ClickedState)
 
-func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
-	if event is InputEventMouse:
-		if Input.is_action_just_pressed("primary_action"):
-			print("alsdkjfasdf")
-		if Input.is_action_just_released("primary_action"):
-			print("released")
-			
-			
 func _startDrag():
-	FSM.change_state(draggingState)
+	FSM.change_state(DraggingState)
+	
+func _startDrop():
+	FSM.change_state(DroppedState)
 	
 func _startIdle():
-	FSM.change_state(idleState)
+	FSM.change_state(IdleState)

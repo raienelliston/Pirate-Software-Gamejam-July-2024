@@ -9,6 +9,7 @@ enum Type {POTION, MATERIAL, HERBS}
 @export var type: Type
 @export var tier: int
 
+
 var item_data: Array
 
 func _init():

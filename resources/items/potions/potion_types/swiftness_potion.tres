@@ -7,6 +7,8 @@
 script = ExtResource("1_bfyye")
 texture = ExtResource("2_xrgbd")
 potion_color = Color(0, 0, 0, 1)
+width = 386
+height = 646
 duration = 0
 radius = 0.0
 potion_type = 0

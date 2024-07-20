@@ -19,5 +19,5 @@ func _input(event):
 		
 		var from = camera_3d.project_ray_origin(event.position)
 		var to = from + camera_3d.project_ray_normal(event.position) * distance
-	
+		print(to)
 		GlobalSignals.emitPrimaryClick(to)

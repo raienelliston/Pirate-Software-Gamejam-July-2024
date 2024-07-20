@@ -54,4 +54,5 @@ secondary_action={
 [layer_names]
 
 2d_physics/layer_2="ItemChangeLayer"
+3d_physics/layer_4="MouseCollide"
 3d_physics/layer_5="CameraCollisionLayer"
