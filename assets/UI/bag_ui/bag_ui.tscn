@@ -78,6 +78,13 @@ constant_linear_velocity = Vector2(370, 0)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuBody"]
 polygon = PackedVector2Array(151, -268, -199, -269, -216, -254, -218, -180, -257, -145, -258, -38, -219, 3, -219, 220, -206, 239, 130, 246, 151, 231)
 
+[node name="ItemDetector" type="Area2D" parent="MenuBody"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuBody/ItemDetector"]
+polygon = PackedVector2Array(151, -268, -199, -269, -216, -254, -218, -180, -257, -145, -258, -38, -219, 3, -219, 220, -206, 239, 130, 246, 151, 231)
+
 [node name="BagMenu" type="Sprite2D" parent="MenuBody"]
 position = Vector2(-71, -12)
 texture = ExtResource("2_2nmya")
