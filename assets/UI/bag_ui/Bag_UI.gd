@@ -4,6 +4,7 @@ enum state {opened, closed, undefined}
 
 @export var animationSpeed: float = 5
 @export var starting_state: state = state.closed
+@onready var item_detector = $MenuBody/ItemDetector
 
 var current_state: state
 
@@ -11,7 +12,7 @@ var current_state: state
 @onready var menu_body = $MenuBody
 
 func _ready():
-	add_to_group("bag")
+	item_detector.add_to_group("bag")
 	animation_tree.set("parameters/blend_position", 1)
 	current_state = state.closed
 	

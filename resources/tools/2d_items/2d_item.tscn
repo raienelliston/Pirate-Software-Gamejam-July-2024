@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://t46rp2st0x6p"]
+[gd_scene load_steps=13 format=3 uid="uid://t46rp2st0x6p"]
 
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_item.gd" id="1_vfnky"]
 [ext_resource type="Script" path="res://resources/tools/finite_state_machine.gd" id="2_go2vl"]
-[ext_resource type="Script" path="res://resources/tools/2d_items/2d_clicked_state.gd" id="3_whrbn"]
-[ext_resource type="Script" path="res://resources/tools/2d_items/2d_dropped_state.gd" id="4_162s3"]
-[ext_resource type="Script" path="res://resources/tools/2d_items/2d_dragging_state.gd" id="5_ddy57"]
-[ext_resource type="Script" path="res://resources/tools/2d_items/2d_idle_state.gd" id="6_li7k0"]
-[ext_resource type="Script" path="res://resources/tools/2d_items/initial_dragging_state.gd" id="7_28xkr"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/2d_clicked_state.gd" id="3_8kq1o"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/2d_dropped_state.gd" id="4_fcdrq"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/2d_dragging_state.gd" id="5_k8ftm"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/2d_idle_state.gd" id="6_1dvrm"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/initial_dragging_state.gd" id="7_0o2hs"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/use_FSM/active_state.gd" id="8_bfo5j"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/use_FSM/inactive_state.gd" id="9_uyew5"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/use_FSM/used_state.gd" id="10_ux1hd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15q80"]
 
@@ -36,29 +39,41 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/BagDetector"]
 shape = SubResource("RectangleShape2D_7cxj7")
 
-[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("state")]
+[node name="DragFSM" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("2_go2vl")
 state = NodePath("IdleState")
 
-[node name="ClickedState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("3_whrbn")
+[node name="ClickedState" type="Node" parent="DragFSM" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("3_8kq1o")
 animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="DroppedState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("4_162s3")
+[node name="DroppedState" type="Node" parent="DragFSM" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("4_fcdrq")
 animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="DraggingState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("5_ddy57")
+[node name="DraggingState" type="Node" parent="DragFSM" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("5_k8ftm")
 animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="IdleState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("6_li7k0")
+[node name="IdleState" type="Node" parent="DragFSM" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("6_1dvrm")
 animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="InitialDraggingState" type="Node" parent="FSM" node_paths=PackedStringArray("sprite_2d")]
-script = ExtResource("7_28xkr")
+[node name="InitialDraggingState" type="Node" parent="DragFSM" node_paths=PackedStringArray("sprite_2d")]
+script = ExtResource("7_0o2hs")
 sprite_2d = NodePath("../../Sprite2D")
+
+[node name="UseFSM" type="Node" parent="."]
+script = ExtResource("2_go2vl")
+
+[node name="ActiveState" type="Node" parent="UseFSM"]
+script = ExtResource("8_bfo5j")
+
+[node name="InactiveState" type="Node" parent="UseFSM"]
+script = ExtResource("9_uyew5")
+
+[node name="UsedState" type="Node" parent="UseFSM"]
+script = ExtResource("10_ux1hd")
 
 [connection signal="area_entered" from="Sprite2D/BagDetector" to="." method="_on_bag_detector_area_entered"]
 [connection signal="area_exited" from="Sprite2D/BagDetector" to="." method="_on_bag_detector_area_exited"]

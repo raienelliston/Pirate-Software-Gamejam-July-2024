@@ -102,6 +102,8 @@ position = Vector2(-71, -12)
 texture = ExtResource("2_2nmya")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="MenuBody"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuBody/StaticBody2D2"]
 polygon = PackedVector2Array(-75, -100, -75, -85, -79, -69, -82, -45, -83, -8, -79, 28, -68, 69, -50, 100, -21, 109, 20, 109, 35, 106, 55, 100, 72, 72, 83, 40, 86, 11, 88, -38, 82, -78, 79, -100, 82, -100, 91, -70, 95, -41, 95, 12, 93, 44, 76, 90, 62, 108, 50, 118, 23, 120, -24, 120, -45, 117, -67, 99, -79, 70, -88, 44, -90, 7, -90, -27, -88, -65, -80, -100)

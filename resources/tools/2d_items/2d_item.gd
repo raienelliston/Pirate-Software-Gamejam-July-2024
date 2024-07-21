@@ -6,15 +6,24 @@ extends Node2D
 
 var killSignal: Signal
 
+
 @onready var sprite_2d = $Sprite2D
 @onready var rigid_body_2d = $Sprite2D/RigidBody2D
 
-@onready var FSM = $FSM
+# Dragging State Machine
+@onready var drag_FSM = $FSM
 @onready var clicked_state = $FSM/ClickedState
 @onready var dropped_state = $FSM/DroppedState
 @onready var dragging_state = $FSM/DraggingState
 @onready var idle_state = $FSM/IdleState
 @onready var initial_dragging_state = $FSM/InitialDraggingState
+
+# Using Item State Machine
+@onready var use_FSM = $UseFSM
+@onready var active_state = $UseFSM/ActiveState
+@onready var inactive_state = $UseFSM/InactiveState
+@onready var used_state = $UseFSM/UsedState
+
 
 func _ready():
 	dragging_state.connect("DropStarted", _startDrop)
@@ -24,8 +33,6 @@ func _ready():
 	initial_dragging_state.connect("DropStarted", _startDrop)
 	
 	sprite_2d.texture = item_resource["texture"]
-	
-	
 	
 	# Create Collision Shapes
 	var texture_path = item_resource.texture["load_path"]
@@ -52,40 +59,39 @@ func _process(delta):
 
 func makePermanent():
 	print("perma")
-	if temp:
-		temp = false
-		FSM.change_state(dragging_state)
+	temp = false
 
 func _startDrop():
-	# If it's permenent
-	if not temp:
-		FSM.change_state(dropped_state)
+	if temp:
 		killSignal.emit(true)
-		
-	# If it's temperary
-	print("balls")
+		queue_free()
+	
+	print("start prem drop")
+	drag_FSM.change_state(dropped_state)
 	killSignal.emit(true)
-	queue_free()
 	
 func _startDrag():
-	FSM.change_state(dragging_state)
+	drag_FSM.change_state(dragging_state)
 	
 func _startIdle():
-	FSM.change_state(idle_state)
+	drag_FSM.change_state(idle_state)
 	
 func _startClick():
-	FSM.change_state(clicked_state)
+	drag_FSM.change_state(clicked_state)
 
 func _startTempDragging():
-	FSM.change_state(initial_dragging_state)
+	drag_FSM.change_state(initial_dragging_state)
 
 
 func _on_bag_detector_area_entered(area):
 	print("detect")
 	if area.is_in_group("bag"):
-		makePermanent()
+		print("bag")
+		if temp:
+			makePermanent()
+		use_FSM.change_state(inactive_state)
 
 func _on_bag_detector_area_exited(area):
 	print("left area")
 	if area.is_in_group("bag"):
-		pass
+		use_FSM.change_state(active_state)
