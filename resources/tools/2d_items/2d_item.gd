@@ -33,20 +33,20 @@ func _ready():
 	idle_state.connect("ClickStarted", _startClick)
 	initial_dragging_state.connect("DropStarted", _startDrop)
 	
+	active_state.connect("Used", _useItem)
+	
 	sprite_2d.texture = item_resource["texture"]
 	
 	# Create Collision Shapes
 	var texture_path = item_resource.texture.resource_path
-	print(texture_path)
 	var texture_img = Image.new()
 	texture_img.load(texture_path)
-	
-	#var data = texture_img.get_data()
 	var bitmap = BitMap.new()
 	bitmap.create_from_image_alpha(texture_img)
 	var polys = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, item_resource.texture.get_size()), 5)
 	
 	for poly in polys:
+		print(poly)
 		var collision_polygon = CollisionPolygon2D.new()
 		collision_polygon.polygon = poly
 		rigid_body_2d.add_child(collision_polygon)
@@ -98,3 +98,6 @@ func _on_bag_detector_area_exited(area):
 	print("left area")
 	if area.is_in_group("bag"):
 		use_FSM.change_state(active_state)
+
+func _useItem():
+	pass

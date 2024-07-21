@@ -30,6 +30,7 @@ input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
 shape = SubResource("RectangleShape2D_15q80")
+debug_color = Color(0.466667, 0.443137, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 
