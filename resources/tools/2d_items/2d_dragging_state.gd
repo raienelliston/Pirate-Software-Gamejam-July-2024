@@ -21,7 +21,6 @@ func _exit_state():
 	
 func _physics_process(delta):
 	# Add logic for sticking the item to the cursor
-	print("asdf")
 	var tween = sprite_2d.get_tree().create_tween()
 	tween.tween_property(self, "position", sprite_2d.get_global_mouse_position() - mouse_offset, 1 * delta)
 	

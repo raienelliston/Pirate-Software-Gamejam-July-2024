@@ -16,6 +16,7 @@
 script = ExtResource("1_vfnky")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
 

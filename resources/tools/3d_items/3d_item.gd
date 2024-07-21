@@ -48,13 +48,15 @@ func onSpawn():
 	pass
 
 func changeTo2D(dropSignal: Signal):
+	var canvas_node = CanvasLayer.new()
 	var _2d_item = _2D_ITEM.instantiate()
 	_2d_item.temp = true
 	_2d_item.item_resource = item_resource
 	position = global_position
 	_2d_item.global_position = CharacterCamera.get_camera_position(position)
 	_2d_item.killSignal = KilledTemp
-	get_tree().get_root().add_child(_2d_item)
+	canvas_node.add_child(_2d_item)
+	get_tree().get_root().add_child(canvas_node)
 
 func tempOutcome(killed: bool):
 	print("killed")

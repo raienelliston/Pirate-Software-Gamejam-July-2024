@@ -19,9 +19,11 @@ func _exit_state():
 	set_physics_process(false)
 
 func _physics_process(delta):
-	print("asdf")
-	var tween = sprite_2d.get_tree().create_tween()
-	tween.tween_property(self, "position", sprite_2d.get_global_mouse_position() - mouse_offset, 1 * delta)
+	#var tween = sprite_2d.get_tree().create_tween()
+	#tween.tween_property(self, "position", sprite_2d.get_global_mouse_position() - mouse_offset, 1 * delta)
+	
+	sprite_2d.position = sprite_2d.get_global_mouse_position()
+	print(sprite_2d.position)
 	
 	if not Input.is_action_pressed("primary_action"):
 		DropStarted.emit()
