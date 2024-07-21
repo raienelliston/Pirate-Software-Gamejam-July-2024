@@ -3,21 +3,25 @@ extends State
 
 signal ClickStarted
 
-@export var detection_area: Area2D
+@export var body: RigidBody2D
 @export var animationPlayer: AnimationPlayer
 
+var active := false
+
 func _ready():
-	pass
+	active = false
+	set_physics_process(false)
 	
 func _enter_state():
 	print("2d idle")
-	
-
-func onClick(vector: Vector3):
-	pass
+	active = true
+	set_physics_process(true)
 
 func _physics_process(delta):
-	pass
-	
 	if animationPlayer.has_animation("idle"):
 		animationPlayer.play("idle")
+
+func _on_rigid_body_2d_input_event(viewport, event, shape_idx):
+	print("event")
+	if Input.is_action_just_pressed("primary_action"):
+		ClickStarted.emit()

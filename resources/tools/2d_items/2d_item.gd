@@ -11,12 +11,13 @@ var killSignal: Signal
 @onready var rigid_body_2d = $Sprite2D/RigidBody2D
 
 # Dragging State Machine
-@onready var drag_FSM = $FSM
-@onready var clicked_state = $FSM/ClickedState
-@onready var dropped_state = $FSM/DroppedState
-@onready var dragging_state = $FSM/DraggingState
-@onready var idle_state = $FSM/IdleState
-@onready var initial_dragging_state = $FSM/InitialDraggingState
+@onready var drag_FSM = $DragFSM
+@onready var clicked_state = $DragFSM/ClickedState
+@onready var dragging_state = $DragFSM/DraggingState
+@onready var dropped_state = $DragFSM/DroppedState
+@onready var idle_state = $DragFSM/IdleState
+@onready var initial_dragging_state = $DragFSM/InitialDraggingState
+
 
 # Using Item State Machine
 @onready var use_FSM = $UseFSM
@@ -35,8 +36,10 @@ func _ready():
 	sprite_2d.texture = item_resource["texture"]
 	
 	# Create Collision Shapes
-	var texture_path = item_resource.texture["load_path"]
-	var texture_img = load(texture_path)
+	var texture_path = item_resource.texture.resource_path
+	print(texture_path)
+	var texture_img = Image.new()
+	texture_img.load(texture_path)
 	
 	#var data = texture_img.get_data()
 	var bitmap = BitMap.new()

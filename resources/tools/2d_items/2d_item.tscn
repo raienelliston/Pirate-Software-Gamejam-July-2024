@@ -26,6 +26,7 @@ z_index = 5
 [node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
 collision_layer = 2
 collision_mask = 2
+input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
 shape = SubResource("RectangleShape2D_15q80")
@@ -75,5 +76,6 @@ script = ExtResource("9_uyew5")
 [node name="UsedState" type="Node" parent="UseFSM"]
 script = ExtResource("10_ux1hd")
 
+[connection signal="input_event" from="Sprite2D/RigidBody2D" to="DragFSM/IdleState" method="_on_rigid_body_2d_input_event"]
 [connection signal="area_entered" from="Sprite2D/BagDetector" to="." method="_on_bag_detector_area_entered"]
 [connection signal="area_exited" from="Sprite2D/BagDetector" to="." method="_on_bag_detector_area_exited"]
