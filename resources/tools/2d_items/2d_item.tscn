@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://t46rp2st0x6p"]
+[gd_scene load_steps=10 format=3 uid="uid://t46rp2st0x6p"]
 
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_item.gd" id="1_vfnky"]
 [ext_resource type="Script" path="res://resources/tools/finite_state_machine.gd" id="2_go2vl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_dropped_state.gd" id="4_162s3"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_dragging_state.gd" id="5_ddy57"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_idle_state.gd" id="6_li7k0"]
+[ext_resource type="Script" path="res://resources/tools/2d_items/initial_dragging_state.gd" id="7_28xkr"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_38xus"]
 
@@ -46,3 +47,6 @@ animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 [node name="IdleState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("6_li7k0")
 animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
+
+[node name="InitialDraggingState" type="Node" parent="FSM"]
+script = ExtResource("7_28xkr")

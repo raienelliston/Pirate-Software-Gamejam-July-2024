@@ -55,9 +55,10 @@ func changeTo2D(dropSignal: Signal):
 	_2d_item.global_position = CharacterCamera.get_camera_position(position)
 	_2d_item.killSignal = KilledTemp
 	get_tree().get_root().add_child(_2d_item)
-	queue_free()
+	_2d_item._startTempDragging()
 
 func tempOutcome(killed: bool):
+	print("killed")
 	if killed:
 		FSM.change_state(DroppedState)
 	else:
