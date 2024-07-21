@@ -21,8 +21,8 @@ func _exit_state():
 	
 func _physics_process(delta):
 	# Add logic for sticking the item to the cursor
-	var tween = sprite_2d.get_tree().create_tween()
-	tween.tween_property(self, "position", sprite_2d.get_global_mouse_position() - mouse_offset, 1 * delta)
+	
+	sprite_2d.position = sprite_2d.get_global_mouse_position()
 	
 	# Triggers state end on letting go of left click
 	if not Input.is_action_pressed("primary_action"):

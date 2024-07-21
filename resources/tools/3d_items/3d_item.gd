@@ -49,14 +49,15 @@ func onSpawn():
 
 func changeTo2D(dropSignal: Signal):
 	var canvas_node = CanvasLayer.new()
+	canvas_node.follow_viewport_enabled = true
 	var _2d_item = _2D_ITEM.instantiate()
-	_2d_item.temp = true
+	_2d_item.temp = false
 	_2d_item.item_resource = item_resource
 	position = global_position
 	_2d_item.global_position = CharacterCamera.get_camera_position(position)
 	_2d_item.killSignal = KilledTemp
-	canvas_node.add_child(_2d_item)
-	get_tree().get_root().add_child(canvas_node)
+	#canvas_node.add_child(_2d_item)
+	get_tree().get_root().add_child(_2d_item)
 
 func tempOutcome(killed: bool):
 	print("killed")

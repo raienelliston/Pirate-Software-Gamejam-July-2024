@@ -1,11 +1,12 @@
 extends Node2D
 
 @export var item_resource: Resource
-@export var texture: Texture
 @export var starting_state: State
 @export var temp: bool = true
 
 var killSignal: Signal
+
+@onready var sprite_2d = $Sprite2D
 
 @onready var FSM = $FSM
 @onready var clicked_state = $FSM/ClickedState
@@ -21,8 +22,12 @@ func _ready():
 	idle_state.connect("ClickStarted", _startClick)
 	initial_dragging_state.connect("DropStarted", _startDrop)
 	
+	sprite_2d.texture = item_resource["texture"]
+	
 	if temp:
 		_startTempDragging()
+	else:
+		_startDrag()
 	
 func _process(delta):
 	pass

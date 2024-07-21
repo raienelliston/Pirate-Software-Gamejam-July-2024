@@ -26,4 +26,5 @@ func _physics_process(delta):
 	print(sprite_2d.position)
 	
 	if not Input.is_action_pressed("primary_action"):
+		set_physics_process(false)
 		DropStarted.emit()
