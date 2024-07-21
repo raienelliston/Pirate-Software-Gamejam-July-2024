@@ -29,5 +29,6 @@ func _on_menu_body_mouse_exited():
 	current_state = state.closed
 
 func _on_item_detector_body_entered(body):
+	print("detect")
 	if body.has_method("makePermanent"):
 		body.makePermanent()

@@ -1,8 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://vx2uab7f1jk5"]
+[gd_scene load_steps=9 format=3 uid="uid://vx2uab7f1jk5"]
 
-[ext_resource type="PackedScene" uid="uid://t46rp2st0x6p" path="res://resources/tools/2d_items/2d_item.tscn" id="1_oxeik"]
 [ext_resource type="PackedScene" uid="uid://boesbgqrelcby" path="res://assets/characters/test_character/test_character.tscn" id="1_po36l"]
-[ext_resource type="Resource" uid="uid://bhhg2j68bha2a" path="res://resources/items/potions/potion_types/swiftness_potion.tres" id="2_48jbc"]
 [ext_resource type="PackedScene" uid="uid://c3vsdx7xfjfh0" path="res://scenes/ui/dungeon_ui/dungeon_ui.tscn" id="2_io3s0"]
 [ext_resource type="PackedScene" uid="uid://yltc7rn30eno" path="res://assets/entities/enemies/test_enemy/test_enemy.tscn" id="3_eei3m"]
 
@@ -22,16 +20,7 @@ size = Vector3(1, 10, 1)
 
 [node name="TestLevel" type="Node3D"]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Item" parent="CanvasLayer2" instance=ExtResource("1_oxeik")]
-item_resource = ExtResource("2_48jbc")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-follow_viewport_enabled = true
-
-[node name="Control" parent="CanvasLayer" instance=ExtResource("2_io3s0")]
+[node name="UI" parent="." instance=ExtResource("2_io3s0")]
 mouse_filter = 1
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
