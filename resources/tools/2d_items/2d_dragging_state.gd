@@ -7,10 +7,10 @@ signal DropStarted
 @export var animationPlayer: AnimationPlayer
 
 func _ready():
-	print("2d dragging")
 	set_physics_process(false)
 
 func _enter_state():
+	print("2d dragging")
 	set_physics_process(true)
 
 func _exit_state():

@@ -8,8 +8,13 @@ signal ClickStarted
 
 var active: bool
 
+func _ready():
+	set_physics_process(false)
+
 func _enter_state():
+	print("3d idle state")
 	active = true
+	set_physics_process(true)
 
 func _exit_state():
 	active = false
@@ -22,4 +27,6 @@ func _physics_process(delta):
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if active:
 		if Input.is_action_just_pressed("primary_action"):
+			active = false
+			set_physics_process(false)
 			ClickStarted.emit()

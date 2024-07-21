@@ -20,6 +20,8 @@ func _ready():
 	dropped_state.connect("IdleStarted", _startIdle)
 	idle_state.connect("ClickStarted", _startClick)
 	
+	if temp:
+		_startTempDragging()
 	
 func _process(delta):
 	pass

@@ -7,8 +7,10 @@ signal ClickStarted
 @export var animationPlayer: AnimationPlayer
 
 func _ready():
-	print("2d idle")
 	pass
+	
+func _enter_state():
+	print("2d idle")
 	
 
 func onClick(vector: Vector3):

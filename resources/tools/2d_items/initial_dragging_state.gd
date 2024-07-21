@@ -7,6 +7,7 @@ func _ready():
 	set_physics_process(false)
 	
 func _enter_state():
+	print("2d inital drag")
 	set_physics_process(true)
 	
 func _exit_state():

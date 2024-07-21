@@ -14,6 +14,7 @@ func _ready():
 	set_physics_process(false)
 
 func _enter_state():
+	print("3d drag state")
 	sprite.visible = false
 	ChangedTo2D.emit(DroppedItem)
 	set_physics_process(true)

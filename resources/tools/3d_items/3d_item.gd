@@ -49,13 +49,12 @@ func onSpawn():
 
 func changeTo2D(dropSignal: Signal):
 	var _2d_item = _2D_ITEM.instantiate()
+	_2d_item.temp = true
 	_2d_item.item_resource = item_resource
-	_2d_item.starting_state = InitialDraggingState
 	position = global_position
 	_2d_item.global_position = CharacterCamera.get_camera_position(position)
 	_2d_item.killSignal = KilledTemp
 	get_tree().get_root().add_child(_2d_item)
-	_2d_item._startTempDragging()
 
 func tempOutcome(killed: bool):
 	print("killed")

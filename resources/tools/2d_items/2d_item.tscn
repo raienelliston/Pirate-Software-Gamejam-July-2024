@@ -29,8 +29,9 @@ shape = SubResource("SegmentShape2D_b070o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 
-[node name="FSM" type="Node" parent="."]
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("2_go2vl")
+state = NodePath("IdleState")
 
 [node name="ClickedState" type="Node" parent="FSM" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("3_whrbn")
