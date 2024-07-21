@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://t46rp2st0x6p"]
+[gd_scene load_steps=10 format=3 uid="uid://t46rp2st0x6p"]
 
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_item.gd" id="1_vfnky"]
 [ext_resource type="Script" path="res://resources/tools/finite_state_machine.gd" id="2_go2vl"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_idle_state.gd" id="6_li7k0"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/initial_dragging_state.gd" id="7_28xkr"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_38xus"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15q80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cxj7"]
 
 [node name="Item" type="Node2D"]
 script = ExtResource("1_vfnky")
@@ -23,9 +25,16 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
-shape = SubResource("SegmentShape2D_38xus")
+shape = SubResource("RectangleShape2D_15q80")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+
+[node name="BagDetector" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/BagDetector"]
+shape = SubResource("RectangleShape2D_7cxj7")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("2_go2vl")
@@ -51,4 +60,5 @@ animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 script = ExtResource("7_28xkr")
 sprite_2d = NodePath("../../Sprite2D")
 
-[connection signal="body_entered" from="Sprite2D/RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="area_entered" from="Sprite2D/BagDetector" to="." method="_on_bag_detector_area_entered"]
+[connection signal="area_exited" from="Sprite2D/BagDetector" to="." method="_on_bag_detector_area_exited"]

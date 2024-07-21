@@ -25,8 +25,18 @@ func _ready():
 	
 	sprite_2d.texture = item_resource["texture"]
 	
-	# Create Collision Shape
-	for poly in item_resource.polys:
+	
+	
+	# Create Collision Shapes
+	var texture_path = item_resource.texture["load_path"]
+	var texture_img = load(texture_path)
+	
+	#var data = texture_img.get_data()
+	var bitmap = BitMap.new()
+	bitmap.create_from_image_alpha(texture_img)
+	var polys = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, item_resource.texture.get_size()), 5)
+	
+	for poly in polys:
 		var collision_polygon = CollisionPolygon2D.new()
 		collision_polygon.polygon = poly
 		rigid_body_2d.add_child(collision_polygon)
@@ -69,6 +79,13 @@ func _startClick():
 func _startTempDragging():
 	FSM.change_state(initial_dragging_state)
 
-func _on_rigid_body_2d_body_entered(body):
-	if body.is_in_group("bag"):
+
+func _on_bag_detector_area_entered(area):
+	print("detect")
+	if area.is_in_group("bag"):
 		makePermanent()
+
+func _on_bag_detector_area_exited(area):
+	print("left area")
+	if area.is_in_group("bag"):
+		pass

@@ -12,16 +12,9 @@ enum Type {POTION, MATERIAL, HERBS}
 @export var type: Type
 @export var tier: int
 
-
 var item_data: Array
 
 func _init():
 	var item_table_file = FileAccess.open("res://resources/items/item_table.json", FileAccess.READ)
 	var item_data_json = JSON.parse_string(item_table_file.get_as_text())
 	item_data = item_data_json
-	
-	var data = texture.get_data()
-	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(data)
-	
-	var polys = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, texture.get_size()), 5)
