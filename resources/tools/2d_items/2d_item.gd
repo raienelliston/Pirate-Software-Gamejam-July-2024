@@ -33,6 +33,7 @@ func _startDrop():
 		FSM.change_state(dropped_state)
 		
 	# If it's temperary
+	print("balls")
 	killSignal.emit()
 	queue_free()
 	

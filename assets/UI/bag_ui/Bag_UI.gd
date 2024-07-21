@@ -11,14 +11,14 @@ var current_state: state
 @onready var menu_body = $MenuBody
 
 func _ready():
-	var current_state = state.closed
+	animation_tree.set("parameters/blend_position", 1)
+	current_state = state.closed
 	
 func _physics_process(delta):
 	var blend = animation_tree.get("parameters/blend_position")
-	print(state)
 	
 	if current_state == state.opened:
-		animation_tree.set("parameters/blend_position", blend + (animationSpeed * delta))
+		animation_tree.set("parameters/blend_position", clamp(blend + (animationSpeed * delta), -1, 1))
 	else:
 		animation_tree.set("parameters/blend_position", clamp(blend - (animationSpeed * delta), -1, 1))
 	
