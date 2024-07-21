@@ -19,6 +19,7 @@ func _ready():
 	clicked_state.connect("DragStarted", _startDrag)
 	dropped_state.connect("IdleStarted", _startIdle)
 	idle_state.connect("ClickStarted", _startClick)
+	initial_dragging_state.connect("DropStarted", _startDrop)
 	
 	if temp:
 		_startTempDragging()
@@ -40,7 +41,7 @@ func _startDrop():
 		
 	# If it's temperary
 	print("balls")
-	killSignal.emit(false)
+	killSignal.emit(true)
 	queue_free()
 	
 func _startDrag():

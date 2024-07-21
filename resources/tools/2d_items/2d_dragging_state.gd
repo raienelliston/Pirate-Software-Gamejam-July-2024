@@ -6,11 +6,14 @@ signal DropStarted
 @onready var sprite_2d = $"../../Sprite2D"
 @export var animationPlayer: AnimationPlayer
 
+var mouse_offset: Vector2
+
 func _ready():
 	set_physics_process(false)
 
 func _enter_state():
 	print("2d dragging")
+	mouse_offset = sprite_2d.get_global_mouse_position() - sprite_2d.global_position
 	set_physics_process(true)
 
 func _exit_state():
@@ -19,7 +22,8 @@ func _exit_state():
 func _physics_process(delta):
 	# Add logic for sticking the item to the cursor
 	print("asdf")
-	sprite_2d.global_position = lerp(sprite_2d.global_position, get_viewport().get_mouse_position(), 25 * delta)
+	var tween = sprite_2d.get_tree().create_tween()
+	tween.tween_property(self, "position", sprite_2d.get_global_mouse_position() - mouse_offset, 1 * delta)
 	
 	# Triggers state end on letting go of left click
 	if not Input.is_action_pressed("primary_action"):

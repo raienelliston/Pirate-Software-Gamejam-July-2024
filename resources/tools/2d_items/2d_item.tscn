@@ -49,5 +49,6 @@ animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 script = ExtResource("6_li7k0")
 animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 
-[node name="InitialDraggingState" type="Node" parent="FSM"]
+[node name="InitialDraggingState" type="Node" parent="FSM" node_paths=PackedStringArray("sprite_2d")]
 script = ExtResource("7_28xkr")
+sprite_2d = NodePath("../../Sprite2D")
