@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://t46rp2st0x6p"]
+[gd_scene load_steps=9 format=3 uid="uid://t46rp2st0x6p"]
 
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_item.gd" id="1_vfnky"]
 [ext_resource type="Script" path="res://resources/tools/finite_state_machine.gd" id="2_go2vl"]
@@ -9,8 +9,6 @@
 [ext_resource type="Script" path="res://resources/tools/2d_items/initial_dragging_state.gd" id="7_28xkr"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_38xus"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_b070o"]
 
 [node name="Item" type="Node2D"]
 script = ExtResource("1_vfnky")
@@ -26,13 +24,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
 shape = SubResource("SegmentShape2D_38xus")
-
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-shape = SubResource("SegmentShape2D_b070o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 
@@ -59,3 +50,5 @@ animationPlayer = NodePath("../../Sprite2D/AnimationPlayer")
 [node name="InitialDraggingState" type="Node" parent="FSM" node_paths=PackedStringArray("sprite_2d")]
 script = ExtResource("7_28xkr")
 sprite_2d = NodePath("../../Sprite2D")
+
+[connection signal="body_entered" from="Sprite2D/RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]

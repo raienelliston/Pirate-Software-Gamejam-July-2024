@@ -11,6 +11,7 @@ var current_state: state
 @onready var menu_body = $MenuBody
 
 func _ready():
+	add_to_group("bag")
 	animation_tree.set("parameters/blend_position", 1)
 	current_state = state.closed
 	

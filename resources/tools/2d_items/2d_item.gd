@@ -7,6 +7,7 @@ extends Node2D
 var killSignal: Signal
 
 @onready var sprite_2d = $Sprite2D
+@onready var rigid_body_2d = $Sprite2D/RigidBody2D
 
 @onready var FSM = $FSM
 @onready var clicked_state = $FSM/ClickedState
@@ -23,6 +24,13 @@ func _ready():
 	initial_dragging_state.connect("DropStarted", _startDrop)
 	
 	sprite_2d.texture = item_resource["texture"]
+	
+	# Create Collision Shape
+	for poly in item_resource.polys:
+		var collision_polygon = CollisionPolygon2D.new()
+		collision_polygon.polygon = poly
+		rigid_body_2d.add_child(collision_polygon)
+		
 	
 	if temp:
 		_startTempDragging()
@@ -60,3 +68,7 @@ func _startClick():
 
 func _startTempDragging():
 	FSM.change_state(initial_dragging_state)
+
+func _on_rigid_body_2d_body_entered(body):
+	if body.is_in_group("bag"):
+		makePermanent()
