@@ -18,6 +18,7 @@ const _2D_ITEM = preload("res://resources/tools/2d_items/2d_item.tscn")
 @onready var DroppedState = $FiniteStateMachine/DroppedState
 
 func _ready():
+	add_to_group("dropped item")
 	
 	# Connect state machine connections
 	IdleState.connect("ClickStarted", _startClick)
@@ -30,14 +31,9 @@ func _ready():
 	# Set appearnce parameters
 	item_sprite.texture = item_resource["texture"]
 	
-	#TEMP
-	var width = item_resource["width"]
-	var height = item_resource["height"]
-	
 	# Set collision_shape
-	print(width, height)
 	var shape = RectangleShape2D.new()
-	shape.size = Vector2(width, height)
+	shape.size = item_sprite.texture.get_size()
 	#collision_shape_2d.set_shape(shape)
 	
 	onSpawn()

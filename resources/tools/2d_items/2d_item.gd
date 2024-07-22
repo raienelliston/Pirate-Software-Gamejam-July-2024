@@ -30,6 +30,8 @@ var active: bool = false
 
 
 func _ready():
+	add_to_group("item")
+	
 	dragging_state.connect("DropStarted", _startDrop)
 	clicked_state.connect("DragStarted", _startDrag)
 	dropped_state.connect("IdleStarted", _startIdle)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://7620cuisjd33"]
+
+[ext_resource type="Script" path="res://resources/tools/targeters/target_locator.gd" id="1_eogrq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qs143"]
+
+[node name="TargetLocator" type="Node3D"]
+script = ExtResource("1_eogrq")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_qs143")

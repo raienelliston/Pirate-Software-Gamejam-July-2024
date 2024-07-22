@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://vx2uab7f1jk5"]
+[gd_scene load_steps=10 format=3 uid="uid://vx2uab7f1jk5"]
 
 [ext_resource type="PackedScene" uid="uid://boesbgqrelcby" path="res://assets/characters/test_character/test_character.tscn" id="1_po36l"]
 [ext_resource type="PackedScene" uid="uid://c3vsdx7xfjfh0" path="res://scenes/ui/dungeon_ui/dungeon_ui.tscn" id="2_io3s0"]
 [ext_resource type="PackedScene" uid="uid://yltc7rn30eno" path="res://assets/entities/enemies/test_enemy/test_enemy.tscn" id="3_eei3m"]
+[ext_resource type="PackedScene" uid="uid://7620cuisjd33" path="res://resources/tools/targeters/target_locator.tscn" id="4_xfvct"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3sj1m"]
 
@@ -52,3 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87067, 0.477835, -0.935265
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 shadow_enabled = true
+
+[node name="TargetLocator" parent="." instance=ExtResource("4_xfvct")]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
