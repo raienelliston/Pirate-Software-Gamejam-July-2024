@@ -22,7 +22,7 @@ func _exit_state():
 func _physics_process(delta):
 	# Add logic for sticking the item to the cursor
 	
-	rigid_body_2d.position = rigid_body_2d.get_global_mouse_position()
+	rigid_body_2d.position = rigid_body_2d.get_global_mouse_position() - mouse_offset
 	
 	# Triggers state end on letting go of left click
 	if not Input.is_action_pressed("primary_action"):

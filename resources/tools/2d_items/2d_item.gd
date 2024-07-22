@@ -37,21 +37,6 @@ func _ready():
 	
 	sprite_2d.texture = item_resource["texture"]
 	
-	# Create Collision Shapes
-	var texture_path = item_resource.texture.resource_path
-	var texture_img = Image.new()
-	texture_img.load(texture_path)
-	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(texture_img)
-	var polys = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, item_resource.texture.get_size()), 5)
-	
-	for poly in polys:
-		print(poly)
-		var collision_polygon = CollisionPolygon2D.new()
-		collision_polygon.polygon = poly
-		rigid_body_2d.add_child(collision_polygon)
-		
-	
 	if temp:
 		_startTempDragging()
 	else:
