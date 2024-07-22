@@ -5,7 +5,7 @@ extends ItemEffect
 @export var interval_amount: float
 @export var interval_length: float
 
-func trigger_effect(node):
+func trigger_effect(sourceNode, targetNode):
 	node.resource.take_damage(damage_amount)
 	for i in interval_amount - 1:
 		await node.get_tree().create_timer(interval_length)

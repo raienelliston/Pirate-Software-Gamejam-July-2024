@@ -4,8 +4,8 @@ extends ItemEffect
 @export var duration: float
 @export var temporary: bool = true
 
-func trigger_effect(node):
-	node.speed *= speed_multiplier
+func trigger_effect(sourceNode, targetNode):
+	targetNode.speed *= speed_multiplier
 	if temporary:
-		await node.get_tree().create_timer(duration)
-		node.speed *= (speed_multiplier / 1)
+		await targetNode.get_tree().create_timer(duration)
+		targetNode.speed *= (speed_multiplier / 1)

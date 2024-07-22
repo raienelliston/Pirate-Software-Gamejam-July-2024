@@ -16,7 +16,7 @@ enum Shape {SPHERE=1, RECTANGLE=2}
 @export var area_origin: AreaOrigin
 @export var direction: float
 
-func trigger_effect(node):
+func trigger_effect(sourceNode, targetNode):
 	# Collision Shape
 	var collision_shape_3d = CollisionShape3D.new()
 	match shape:
