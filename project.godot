@@ -18,6 +18,8 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 GlobalSignals="*res://resources/tools/global_signals.gd"
 CharacterCamera="*res://assets/characters/test_character/Camera.gd"
+TargetLocator="*res://resources/tools/targeters/target_locator.gd"
+ArrowTargeter="*res://resources/tools/targeters/arrow_targeter.gd"
 
 [input]
 
@@ -57,3 +59,4 @@ secondary_action={
 2d_physics/layer_2="ItemChangeLayer"
 3d_physics/layer_4="MouseCollide"
 3d_physics/layer_5="CameraCollisionLayer"
+3d_physics/layer_8="Entity Detection Layer"

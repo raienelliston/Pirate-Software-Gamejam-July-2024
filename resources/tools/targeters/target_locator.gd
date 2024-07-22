@@ -1,4 +1,3 @@
-class_name TargetLocator
 extends Node3D
 
 var items: Array[Node]
@@ -23,3 +22,11 @@ func _process(delta):
 			enemies.append(area)
 		if area.is_in_group("friendly"):
 			friendlies.append(area)
+	
+	for body in area_3d.get_overlapping_bodies():
+		if body.is_in_group("item"):
+			items.append(body)
+		if body.is_in_group("enemy"):
+			enemies.append(body)
+		if body.is_in_group("friendly"):
+			friendlies.append(body)

@@ -15,6 +15,7 @@ size = Vector3(1, 7, 5)
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jyo8e"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 129
 script = ExtResource("1_kuodl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

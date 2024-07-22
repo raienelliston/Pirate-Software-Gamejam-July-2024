@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuagm5yb7q2t0"]
-
-[ext_resource type="Script" path="res://resources/tools/targeters/item_targeter.gd" id="1_rbe4o"]
-
-[node name="ItemTargeter" type="Node2D"]
-script = ExtResource("1_rbe4o")

@@ -16,6 +16,7 @@ script = ExtResource("1_sx2s0")
 [node name="ItemSprite" type="Sprite3D" parent="."]
 
 [node name="Area3D" type="Area3D" parent="ItemSprite"]
+collision_layer = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemSprite/Area3D"]
 shape = SubResource("BoxShape3D_mfknb")
