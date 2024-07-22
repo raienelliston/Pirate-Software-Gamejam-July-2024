@@ -30,6 +30,6 @@ func previewItem(sourceNode, targetNode):
 	if preview_effect != null and preview_effect.has_method("preview_effect"):
 		preview_effect.preview_effect(sourceNode, targetNode)
 
-func updatePreview(sourceNode, targetNode):
+func updatePreview(sourceNode, targetNode, previewNode):
 	if preview_effect != null and preview_effect.has_method("update_preview"):
-		preview_effect.update_preview(sourceNode, targetNode)
+		preview_effect.update_preview(sourceNode, targetNode, previewNode)

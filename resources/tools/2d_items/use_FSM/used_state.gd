@@ -1,10 +1,12 @@
 class_name UsedState
 extends State
 
-var item_resource = self.get_parent().item_resource
+@onready var item = $"../.."
+
+
 
 func _ready():
-	pass
+	var item_resource = item.item_resource
 	
 func _enter_state():
 	pass

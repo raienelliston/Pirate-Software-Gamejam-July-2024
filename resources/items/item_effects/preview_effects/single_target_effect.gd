@@ -3,7 +3,6 @@ extends ItemEffect
 @export var texture: Texture = preload("res://assets/tools/target_spray.png")
 
 func preview_effect(sourceNode, targetNode):
-	
 	var newNode = Node3D.new()
 	
 	# Create target decal
@@ -14,5 +13,5 @@ func preview_effect(sourceNode, targetNode):
 	
 	return newNode
 	
-func update_preview_effect(sourceNode, targetNode):
+func update_preview_effect(sourceNode, targetNode, previewNode):
 	pass

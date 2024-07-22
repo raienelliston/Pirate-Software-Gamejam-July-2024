@@ -10,7 +10,7 @@ func _ready():
 	pass
 	
 func _process(delta):
-	
+	return
 	items = []
 	enemies = []
 	friendlies = []

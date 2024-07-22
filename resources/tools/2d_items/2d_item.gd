@@ -37,9 +37,7 @@ func _ready():
 	dropped_state.connect("IdleStarted", _startIdle)
 	idle_state.connect("ClickStarted", _startClick)
 	initial_dragging_state.connect("DropStarted", _startDrop)
-	
-	active_state.connect("Used", _useItem)
-	
+
 	sprite_2d.texture = item_resource["texture"]
 	
 	if temp:
@@ -88,7 +86,3 @@ func _on_bag_detector_area_exited(area):
 	print("left area")
 	if area.is_in_group("bag"):
 		use_FSM.change_state(active_state)
-
-func _useItem():
-	item_resource.useItem(self)
-	UsedItem.emit()
