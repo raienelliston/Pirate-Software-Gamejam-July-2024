@@ -7,6 +7,7 @@ var item_resource: Item
 var preview_node: Node
 
 @onready var item = $"../.."
+@onready var sprite_2d = $"../../RigidBody2D/Sprite2D"
 
 func _ready():
 	item_resource = item.item_resource
@@ -20,8 +21,12 @@ func _enter_state():
 		preview_node = item_resource.previewItem(item, pos)
 	item.add_child(preview_node)
 	
+	item.visible = false
+	
 func _exit_state():
 	set_physics_process(false)
+	
+	item.visible = true
 	
 func _physics_process(delta):
 	var pos = CharacterCamera.get_mouse_position()

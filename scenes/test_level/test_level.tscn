@@ -29,8 +29,6 @@ mouse_filter = 1
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.517527, 0)
-collision_layer = 9
-collision_mask = 9
 physics_material_override = SubResource("PhysicsMaterial_3sj1m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
