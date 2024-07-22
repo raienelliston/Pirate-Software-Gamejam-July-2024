@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vx2uab7f1jk5"]
+[gd_scene load_steps=11 format=3 uid="uid://vx2uab7f1jk5"]
 
 [ext_resource type="PackedScene" uid="uid://boesbgqrelcby" path="res://assets/characters/test_character/test_character.tscn" id="1_po36l"]
 [ext_resource type="PackedScene" uid="uid://c3vsdx7xfjfh0" path="res://scenes/ui/dungeon_ui/dungeon_ui.tscn" id="2_io3s0"]
@@ -13,6 +13,9 @@ size = Vector3(10, 1, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_4jg34"]
 size = Vector3(10, 1, 10)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fl6s"]
+size = Vector3(100, 1, 100)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_h0fby"]
 size = Vector3(1, 10, 1)
 
@@ -26,21 +29,27 @@ mouse_filter = 1
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.517527, 0)
+collision_layer = 9
+collision_mask = 9
 physics_material_override = SubResource("PhysicsMaterial_3sj1m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_5wkuq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-layers = 33
 mesh = SubResource("BoxMesh_4jg34")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+shape = SubResource("BoxShape3D_1fl6s")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_po36l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.00644, 0)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
-collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("BoxShape3D_h0fby")
