@@ -21,7 +21,7 @@ func spawn():
 	pass
 
 func take_damage(amount: int):
-	pass
+	health -= amount
 
 func death():
 	pass
