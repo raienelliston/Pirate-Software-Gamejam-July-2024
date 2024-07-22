@@ -3,6 +3,8 @@ extends State
 
 signal Used
 
+@export var camera_resource: CameraInfo
+
 var item_resource: Item
 var preview_node: Node
 
@@ -16,7 +18,7 @@ func _ready():
 func _enter_state():
 	print("item ready")
 	set_physics_process(true)
-	var pos = CharacterCamera.get_mouse_position()
+	var pos = PlayerCamera["mouse_position"]
 	if pos:
 		preview_node = item_resource.previewItem(item, pos)
 	item.add_child(preview_node)
@@ -29,7 +31,7 @@ func _exit_state():
 	item.visible = true
 	
 func _physics_process(delta):
-	var pos = CharacterCamera.get_mouse_position()
+	var pos = PlayerCamera["mouse_position"]
 	if pos:
 		item_resource.updatePreview(item, pos, preview_node)
 	if not Input.is_action_pressed("primary_action"):

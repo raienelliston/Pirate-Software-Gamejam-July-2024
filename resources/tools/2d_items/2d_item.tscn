@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t46rp2st0x6p"]
+[gd_scene load_steps=13 format=3 uid="uid://t46rp2st0x6p"]
 
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_item.gd" id="1_vfnky"]
 [ext_resource type="Script" path="res://resources/tools/finite_state_machine.gd" id="2_go2vl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/initial_dragging_state.gd" id="7_0o2hs"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/use_FSM/active_state.gd" id="8_bfo5j"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/use_FSM/inactive_state.gd" id="9_uyew5"]
+[ext_resource type="Script" path="res://resources/tools/camera_info.gd" id="9_xjx0h"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/use_FSM/used_state.gd" id="10_ux1hd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cxj7"]
@@ -64,6 +65,7 @@ script = ExtResource("2_go2vl")
 
 [node name="ActiveState" type="Node" parent="UseFSM"]
 script = ExtResource("8_bfo5j")
+camera_resource = ExtResource("9_xjx0h")
 
 [node name="InactiveState" type="Node" parent="UseFSM"]
 script = ExtResource("9_uyew5")
