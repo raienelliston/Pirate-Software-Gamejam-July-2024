@@ -5,12 +5,16 @@ signal Used
 
 var item_resource: Item
 
+@onready var item = $"../.."
+
 func _ready():
-	item_resource = get_parent().get_parent().item_resource
+	item_resource = item.item_resource
 	set_physics_process(false)
 	
 func _enter_state():
+	print("item ready")
 	set_physics_process(true)
+	#item_resource.previewItem(item)
 	
 func _exit_state():
 	set_physics_process(false)
