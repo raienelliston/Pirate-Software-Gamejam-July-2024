@@ -32,6 +32,7 @@ physics_material_override = SubResource("PhysicsMaterial_3sj1m")
 shape = SubResource("BoxShape3D_5wkuq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+layers = 33
 mesh = SubResource("BoxMesh_4jg34")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_po36l")]

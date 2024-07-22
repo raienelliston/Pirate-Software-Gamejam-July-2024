@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1aax2fwarc1"]
+
+[ext_resource type="Texture2D" uid="uid://v0m7u2vqyls2" path="res://assets/tools/target_spray.png" id="1_4fcw4"]
+
+[node name="Targeter" type="Node3D"]
+
+[node name="Decal" type="Decal" parent="."]
+texture_albedo = ExtResource("1_4fcw4")
+cull_mask = 1047584

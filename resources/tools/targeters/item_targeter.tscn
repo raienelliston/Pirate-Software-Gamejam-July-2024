@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1xrrcb1e2w57"]
+
+[sub_resource type="GDScript" id="GDScript_57rh7"]
+script/source = "extends Node2D
+"
+
+[node name="ItemTargeter" type="Node2D"]
+script = SubResource("GDScript_57rh7")
