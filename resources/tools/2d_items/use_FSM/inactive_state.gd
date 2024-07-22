@@ -3,14 +3,13 @@ extends State
 
 @export var animationPlayer: AnimationPlayer
 
+@onready var rigid_body_2d = $"../../RigidBody2D"
+
 func _ready():
 	pass
 	
 func _enter_state():
-	pass
+	rigid_body_2d.gravity_scale = 1
 	
 func _exit_state():
-	pass
-	
-#func _physics_process(delta):
-	#pass
+	rigid_body_2d.gravity_scale = 0

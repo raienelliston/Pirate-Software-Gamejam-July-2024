@@ -1,7 +1,7 @@
 class_name ThreeDClickedState
 extends State
 
-signal DragStarted
+signal Used
 
 @export var animationPlayer: AnimationPlayer
 
@@ -10,4 +10,4 @@ func _enter_state():
 	if animationPlayer.has_animation("clicked"):
 		animationPlayer.play("clicked")
 	
-	DragStarted.emit()
+	Used.emit()

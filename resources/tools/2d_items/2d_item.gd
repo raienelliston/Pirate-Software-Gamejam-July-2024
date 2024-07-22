@@ -1,11 +1,14 @@
 @tool
 extends Node2D
 
+signal UsedItem
+
 @export var item_resource: Resource
 @export var starting_state: State
 @export var temp: bool = true
 
 var killSignal: Signal
+var active: bool = false
 
 @onready var rigid_body_2d = $RigidBody2D
 @onready var sprite_2d = $RigidBody2D/Sprite2D
@@ -85,4 +88,4 @@ func _on_bag_detector_area_exited(area):
 		use_FSM.change_state(active_state)
 
 func _useItem():
-	pass
+	UsedItem.emit()

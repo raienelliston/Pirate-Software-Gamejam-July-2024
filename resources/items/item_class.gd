@@ -9,7 +9,8 @@ enum Type {POTION, MATERIAL, HERBS}
 @export_group("Item Attributes")
 @export var id: String
 @export var description: String
-@export var type: Type
+@export var type: ItemEffect
+@export var effect: Script
 @export var tier: int
 
 var item_data: Array
