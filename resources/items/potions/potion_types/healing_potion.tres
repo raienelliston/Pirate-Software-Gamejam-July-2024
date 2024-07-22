@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://0qbkx2v0atky"]
+[gd_resource type="Resource" script_class="Potion" load_steps=4 format=3 uid="uid://0qbkx2v0atky"]
 
+[ext_resource type="Script" path="res://resources/items/item_effects/modifier_effects/area_effect.gd" id="1_nel4d"]
 [ext_resource type="Script" path="res://resources/items/potions/potion_class.gd" id="1_v8tj7"]
 [ext_resource type="Texture2D" uid="uid://c3fh6jjlrts4a" path="res://assets/items/potion_medium.png" id="2_hjohs"]
 
 [resource]
 script = ExtResource("1_v8tj7")
-texture = ExtResource("2_hjohs")
 potion_color = Color(0.811765, 0, 0, 1)
-width = 386
-height = 646
-duration = 0
-radius = 0.0
 potion_type = 0
 potion_attribute = 0
+texture = ExtResource("2_hjohs")
+name = ""
+description = ""
+item_effects = Array[Resource]([ExtResource("1_nel4d")])
+tier = 0
