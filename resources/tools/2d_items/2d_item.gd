@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @export var item_resource: Resource
@@ -6,9 +7,8 @@ extends Node2D
 
 var killSignal: Signal
 
-
-@onready var sprite_2d = $Sprite2D
-@onready var rigid_body_2d = $Sprite2D/RigidBody2D
+@onready var rigid_body_2d = $RigidBody2D
+@onready var sprite_2d = $RigidBody2D/Sprite2D
 
 # Dragging State Machine
 @onready var drag_FSM = $DragFSM

@@ -22,6 +22,5 @@ func _physics_process(delta):
 		animationPlayer.play("idle")
 
 func _on_rigid_body_2d_input_event(viewport, event, shape_idx):
-	print("event")
-	if Input.is_action_just_pressed("primary_action"):
+	if Input.is_action_just_pressed("primary_action") and active:
 		ClickStarted.emit()
