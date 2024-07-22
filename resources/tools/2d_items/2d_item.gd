@@ -88,4 +88,5 @@ func _on_bag_detector_area_exited(area):
 		use_FSM.change_state(active_state)
 
 func _useItem():
+	item_resource.useItem(self)
 	UsedItem.emit()

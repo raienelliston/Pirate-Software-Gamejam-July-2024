@@ -5,11 +5,13 @@
 
 [resource]
 script = ExtResource("1_bfyye")
-texture = ExtResource("2_plm2w")
 potion_color = Color(0, 0, 0, 1)
-width = 386
-height = 646
 duration = 0
 radius = 0.0
 potion_type = 0
 potion_attribute = 0
+texture = ExtResource("2_plm2w")
+name = ""
+description = ""
+item_effects = Array[Resource("res://resources/items/item_effects/item_effect_base.gd")]([])
+tier = 0
