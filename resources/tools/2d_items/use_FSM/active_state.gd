@@ -4,6 +4,7 @@ extends State
 signal Used
 
 var item_resource: Item
+var preview_node: Node
 
 @onready var item = $"../.."
 
@@ -14,12 +15,18 @@ func _ready():
 func _enter_state():
 	print("item ready")
 	set_physics_process(true)
-	#item_resource.previewItem(item)
+	var pos = CharacterCamera.get_mouse_position()
+	if pos:
+		preview_node = item_resource.previewItem(item, pos)
+	item.add_child(preview_node)
 	
 func _exit_state():
 	set_physics_process(false)
 	
 func _physics_process(delta):
+	var pos = CharacterCamera.get_mouse_position()
+	if pos:
+		item_resource.updatePreview(item, pos, preview_node)
 	if not Input.is_action_pressed("primary_action"):
 		set_physics_process(false)
 		Used.emit()

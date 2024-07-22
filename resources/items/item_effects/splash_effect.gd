@@ -7,5 +7,5 @@ enum Shape {CIRCLE, SQUARE, RECTANGLE}
 @export var secondary_length: float
 @export var shape: Shape
 
-func trigger_effect(node):
+func trigger_effect(sourceNode: Node, targetPosition: Vector3):
 	pass

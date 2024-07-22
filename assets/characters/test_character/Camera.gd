@@ -12,7 +12,7 @@ func _ready():
 func get_camera_position(pos: Vector3):
 	return camera_3d.unproject_position(pos)
 	
-func get_mouse_position() -> Vector3:
+func get_mouse_position():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 1000
 	var from = project_ray_origin(mouse_pos)
@@ -22,9 +22,9 @@ func get_mouse_position() -> Vector3:
 	ray_query.from = from
 	ray_query.to = to
 	var raycast_result = space.intersect_ray(ray_query)
-	
+	if raycast_result == {}:
+		return
 	print(raycast_result["position"])
 	return raycast_result["position"]
-	
 	
 	return Vector3.ZERO

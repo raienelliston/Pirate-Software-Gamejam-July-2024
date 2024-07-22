@@ -26,10 +26,10 @@ func useItem(sourceNode, targetNode):
 		if effect != null and effect.has_method("trigger_effect"):
 			effect.trigger_effect(sourceNode, targetNode)
 
-func previewItem(sourceNode, targetNode):
+func previewItem(sourceNode: Node, targetPosition: Vector3):
 	if preview_effect != null and preview_effect.has_method("preview_effect"):
-		preview_effect.preview_effect(sourceNode, targetNode)
+		preview_effect.preview_effect(sourceNode, targetPosition)
 
-func updatePreview(sourceNode, targetNode, previewNode):
+func updatePreview(sourceNode: Node, targetPosition: Vector3, previewNode: Node):
 	if preview_effect != null and preview_effect.has_method("update_preview"):
-		preview_effect.update_preview(sourceNode, targetNode, previewNode)
+		preview_effect.update_preview(sourceNode, targetPosition, previewNode)
