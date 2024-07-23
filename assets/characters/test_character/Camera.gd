@@ -13,4 +13,3 @@ func _ready():
 	
 func get_camera_position(pos: Vector3):
 	return camera_3d.unproject_position(pos)
-	

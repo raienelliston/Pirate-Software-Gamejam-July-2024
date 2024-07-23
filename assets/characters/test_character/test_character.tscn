@@ -1,16 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://boesbgqrelcby"]
+[gd_scene load_steps=7 format=3 uid="uid://boesbgqrelcby"]
 
 [ext_resource type="Script" path="res://assets/characters/test_character/test_character.gd" id="1_kuodl"]
 [ext_resource type="Script" path="res://assets/characters/test_character/Camera.gd" id="2_60y5j"]
 [ext_resource type="Script" path="res://assets/characters/test_character/CameraJoint.gd" id="2_djb4x"]
-[ext_resource type="Script" path="res://assets/characters/test_character/CameraSightCollider.gd" id="2_gtity"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uh6j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x3be3"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yw74o"]
-size = Vector3(1, 7, 5)
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jyo8e"]
 
@@ -27,24 +23,12 @@ mesh = SubResource("CapsuleMesh_x3be3")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.880105, 0.47478, 0, -0.47478, 0.880105, 0, 2.54591, 5.37382)
 current = true
-fov = 80.5313
 script = ExtResource("2_60y5j")
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 collision_mask = 8
 collide_with_areas = true
-
-[node name="CameraSightCollider" type="Area3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.880105, -0.47478, 0, 0.47478, 0.880105, 0, 0.31071, -5.93828)
-visible = false
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("2_gtity")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Camera3D/CameraSightCollider"]
-transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, -0.004, 2.494, 2.997)
-shape = SubResource("BoxShape3D_yw74o")
 
 [node name="CameraJoint" type="SpringArm3D" parent="."]
 spring_length = 4.0
@@ -57,6 +41,3 @@ root_node = NodePath("../AnimationTree")
 root_node = NodePath(".")
 tree_root = SubResource("AnimationNodeStateMachine_jyo8e")
 anim_player = NodePath("../AnimationPlayer")
-
-[connection signal="body_entered" from="Camera3D/CameraSightCollider" to="Camera3D/CameraSightCollider" method="_on_body_entered"]
-[connection signal="body_exited" from="Camera3D/CameraSightCollider" to="Camera3D/CameraSightCollider" method="_on_body_exited"]

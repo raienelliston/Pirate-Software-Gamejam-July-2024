@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	
-	var ray_length = 10000
+	var ray_length = 1000
 	
 	var mouse_pos = get_viewport().get_mouse_position()
 	var from = camera_3d.project_ray_origin(mouse_pos)
@@ -25,10 +25,9 @@ func _physics_process(delta: float) -> void:
 	ray_query.collide_with_areas = false
 	var raycast_result = space.intersect_ray(ray_query)
 	if not raycast_result == {}:
-		print(global_position + camera_3d["position"] - raycast_result["position"])
-		GlobalSignals.emit_signal("MouseCoordinates", global_position + camera_3d["position"] - raycast_result["position"])
-	
-	print(global_position)
+		print(raycast_result)
+		print(raycast_result["position"])
+		GlobalSignals.emit_signal("MouseCoordinates", raycast_result["position"])
 	
 	var veloctiy = Vector3.ZERO
 	
