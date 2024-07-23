@@ -20,6 +20,7 @@ GlobalSignals="*res://resources/tools/global_signals.gd"
 CharacterCamera="res://assets/characters/test_character/Camera.gd"
 TargetLocator="*res://resources/tools/targeters/target_locator.gd"
 ArrowTargeter="*res://resources/tools/targeters/arrow_targeter.gd"
+CameraInfo="*res://resources/tools/camera_info.gd"
 
 [input]
 

@@ -18,7 +18,7 @@ func _ready():
 func _enter_state():
 	print("item ready")
 	set_physics_process(true)
-	var pos = PlayerCamera["mouse_position"]
+	var pos = CameraInfo.getMousePosition()
 	if pos:
 		preview_node = item_resource.previewItem(item, pos)
 	item.add_child(preview_node)
