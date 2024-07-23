@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="CameraInfo" load_steps=2 format=3 uid="uid://6xscucftqqvs"]
-
-[ext_resource type="Script" path="res://resources/tools/camera_info.gd" id="1_xs1pe"]
-
-[resource]
-script = ExtResource("1_xs1pe")

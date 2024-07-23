@@ -28,4 +28,4 @@ func _physics_process(delta):
 	var raycast_result = space.intersect_ray(ray_query)
 	if not raycast_result == {}:
 		print(raycast_result["position"])
-		mouse_position = raycast_result["position"]
+		GlobalSignals.emit_signal("MouseCoordinates", raycast_result["position"])
