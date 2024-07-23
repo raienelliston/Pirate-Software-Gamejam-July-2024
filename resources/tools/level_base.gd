@@ -13,6 +13,9 @@ func _ready():
 	
 func level_setup():
 
+	# Reset some values
+	Global.can_camera_rotate = false
+
 	# Handle Player Spawning
 	var spawn_name = Global.getSceneSpawn()
 	var character = TEST_CHARACTER.instantiate()

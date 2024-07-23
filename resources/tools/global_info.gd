@@ -4,6 +4,7 @@ signal PrimaryClick(Vector3)
 signal MouseCoordinates
 
 var scene_name: String
+var can_camera_rotate: bool
 
 func getSceneSpawn() -> String:
 	return scene_name
