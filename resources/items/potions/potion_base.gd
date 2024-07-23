@@ -5,10 +5,11 @@ extends Node2D
 @onready var label = $RigidBody2D/Label
 
 var selected = false
+var scene
 
 func _ready() -> void:
 	label.text = str(base_class["potion_color"])
-	pass
+	scene = Global.getScene()
 
 func _process(delta):
 	if selected:

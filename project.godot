@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Pirate Software Gamejam July 2024"
-run/main_scene="res://scenes/test_level/test_level.tscn"
+run/main_scene="res://scenes/home/home_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
-GlobalSignals="*res://resources/tools/global_signals.gd"
+Global="*res://resources/tools/global_info.gd"
 CharacterCamera="res://assets/characters/test_character/Camera.gd"
 TargetLocator="*res://resources/tools/targeters/target_locator.gd"
 ArrowTargeter="*res://resources/tools/targeters/arrow_targeter.gd"

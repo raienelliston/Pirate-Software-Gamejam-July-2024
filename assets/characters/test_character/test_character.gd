@@ -25,9 +25,7 @@ func _physics_process(delta: float) -> void:
 	ray_query.collide_with_areas = false
 	var raycast_result = space.intersect_ray(ray_query)
 	if not raycast_result == {}:
-		print(raycast_result)
-		print(raycast_result["position"])
-		GlobalSignals.emit_signal("MouseCoordinates", raycast_result["position"])
+		Global.emit_signal("MouseCoordinates", raycast_result["position"])
 	
 	var veloctiy = Vector3.ZERO
 	

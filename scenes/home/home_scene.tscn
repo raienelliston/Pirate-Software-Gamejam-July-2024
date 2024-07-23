@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvwxwj70pj065"]
+
+[ext_resource type="Script" path="res://scenes/home/home_scene.gd" id="1_7k0vo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0jrgo"]
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rl611"]
+size = Vector3(1000, 1, 1000)
+
+[node name="Home" type="Node3D" node_paths=PackedStringArray("defualt_spawn")]
+script = ExtResource("1_7k0vo")
+defualt_spawn = NodePath("Spawns/GameStart")
+spawn_name = "GameStart"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_0jrgo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_rl611")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140831, -0.314819, -0.0447693)
+
+[node name="Spawns" type="Node3D" parent="."]
+
+[node name="GameStart" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89633, 24.1422, -5.29034)
