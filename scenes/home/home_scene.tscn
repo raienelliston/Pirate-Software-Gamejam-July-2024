@@ -69,8 +69,10 @@ menu = ExtResource("2_hwo00")
 visible = false
 
 [node name="InteractionArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.57202, 3.55532, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.56933, 3.51962, 0.00195313)
 script = ExtResource("5_7jyel")
+interaction_name = "Test"
+interaction_description = "This is a test"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48096, 0.708618, 6.07037)
