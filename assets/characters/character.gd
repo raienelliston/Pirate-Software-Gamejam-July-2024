@@ -31,19 +31,19 @@ func allow_camera_rotation(can: bool) -> void:
 func _input(event):
 	if not Global.paused:
 		if event is InputEventMouseMotion:
-			if Global.paused:
-				var mouse_pos = get_viewport().get_mouse_position()
-				var from = camera_3d.project_ray_origin(mouse_pos)
-				var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
-				var space = get_world_3d().direct_space_state
-				var ray_query = PhysicsRayQueryParameters3D.create(from, to)
-				ray_query.collision_mask = 1
-				ray_query.collide_with_bodies = true
-				ray_query.collide_with_areas = false
-				var raycast_result = space.intersect_ray(ray_query)
-				if not raycast_result == {}:
-					Global.emit_signal("MouseCoordinates", raycast_result["position"])
-
+			if Input.is_action_pressed("free_camera"):
+				#var mouse_pos = get_viewport().get_mouse_position()
+				#var from = camera_3d.project_ray_origin(mouse_pos)
+				#var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
+				#var space = get_world_3d().direct_space_state
+				#var ray_query = PhysicsRayQueryParameters3D.create(from, to)
+				#ray_query.collision_mask = 1
+				#ray_query.collide_with_bodies = true
+				#ray_query.collide_with_areas = false
+				#var raycast_result = space.intersect_ray(ray_query)
+				#if not raycast_result == {}:
+					#Global.emit_signal("MouseCoordinates", raycast_result["position"])
+				pass
 			# Camera Rotation
 			else:
 				if camera_rotate:

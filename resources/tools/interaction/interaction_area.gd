@@ -3,7 +3,7 @@ extends Area3D
 
 @export var interaction_name: String
 @export var interaction_description: String 
-@export var interaction_triggers: Array[Node]
+@export var interaction_nodes: Array[Node]
 
 func _on_body_entered(body):
 	if body.is_in_group("player_character"):
@@ -14,6 +14,6 @@ func _on_body_exited(body):
 		Global.UnregisteredArea.emit(self)
 
 func interact():
-	for node in interaction_triggers:
+	for node in interaction_nodes:
 		if node.has_method("trigger"):
 			node.trigger()
