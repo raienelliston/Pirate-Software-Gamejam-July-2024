@@ -11,6 +11,8 @@ var active_index := -1
 
 func _ready():
 	Global.connect("player_node_id", connect_player)
+	Global.connect("RegisteredArea", register_area)
+	Global.connect("UnregisteredArea", unregister_area)
 
 func connect_player(id):
 	player = instance_from_id(id)

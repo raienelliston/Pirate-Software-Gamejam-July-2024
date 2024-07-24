@@ -4,6 +4,8 @@ signal PrimaryClick(Vector3)
 signal MouseCoordinates
 signal AllowedCameraRotation(bool)
 signal player_node_id(String)
+signal RegisteredArea(Area3D)
+signal UnregisteredArea(Area3D)
 
 var scene_name: String
 var paused: bool = false

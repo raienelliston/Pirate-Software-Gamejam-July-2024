@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvwxwj70pj065"]
+[gd_scene load_steps=13 format=3 uid="uid://cvwxwj70pj065"]
 
 [ext_resource type="Script" path="res://scenes/home/home_scene.gd" id="1_7k0vo"]
 [ext_resource type="Script" path="res://scenes/home/test_menu_block.gd" id="2_e3ylh"]
 [ext_resource type="PackedScene" uid="uid://cmiimg4av81fy" path="res://scenes/menus/pause_menu.tscn" id="2_hwo00"]
 [ext_resource type="Script" path="res://resources/tools/classes/menu_spawner.gd" id="3_k0813"]
 [ext_resource type="PackedScene" uid="uid://c0p42o4tmfqqe" path="res://resources/tools/interaction_area/interaction_area.tscn" id="5_ttmdr"]
+[ext_resource type="Script" path="res://scenes/home/test_trigger.gd" id="6_7gq5l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0jrgo"]
 size = Vector3(1000, 1, 1000)
@@ -68,11 +69,30 @@ menu = ExtResource("2_hwo00")
 [node name="Pause Menu" parent="." instance=ExtResource("2_hwo00")]
 visible = false
 
-[node name="InteractionArea" parent="." instance=ExtResource("5_ttmdr")]
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("interaction_triggers") instance=ExtResource("5_ttmdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622559, 1.88461, -0.0113525)
 interaction_name = "Test"
 interaction_description = "Testing"
+interaction_triggers = [NodePath("Node")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.802673, -1.09131, 0.14209)
 shape = SubResource("SphereShape3D_rhb5g")
+
+[node name="Node" type="Node" parent="InteractionArea"]
+script = ExtResource("6_7gq5l")
+
+[node name="InteractionArea2" parent="." node_paths=PackedStringArray("interaction_triggers") instance=ExtResource("5_ttmdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41528, 1.85455, -0.00561523)
+interaction_name = "Test 2"
+interaction_description = "Testing 2"
+interaction_triggers = [NodePath("../InteractionArea/Node")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.802673, -1.09131, 0.14209)
+shape = SubResource("SphereShape3D_rhb5g")
+
+[node name="Node" type="Node" parent="InteractionArea2"]
+script = ExtResource("6_7gq5l")
 
 [connection signal="input_event" from="TestMenuBlock" to="TestMenuBlock" method="_on_input_event"]
