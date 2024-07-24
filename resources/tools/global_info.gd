@@ -17,6 +17,8 @@ func setSceneSpawn(name: String):
 
 func pause():
 	paused = true
+	AllowedCameraRotation.emit(false)
 	
 func unpause():
 	paused = false
+	AllowedCameraRotation.emit(true)

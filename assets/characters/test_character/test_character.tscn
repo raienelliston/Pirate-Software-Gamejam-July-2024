@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://boesbgqrelcby"]
+[gd_scene load_steps=8 format=3 uid="uid://boesbgqrelcby"]
 
 [ext_resource type="Script" path="res://assets/characters/test_character/test_character.gd" id="1_kuodl"]
 [ext_resource type="Script" path="res://assets/characters/test_character/Camera.gd" id="2_60y5j"]
@@ -9,6 +9,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x3be3"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jyo8e"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_i0ejr"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 129
@@ -28,20 +30,20 @@ root_node = NodePath(".")
 tree_root = SubResource("AnimationNodeStateMachine_jyo8e")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="CameraJoint" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502276, 0)
-spring_length = 4.0
+[node name="CameraOrigin" type="Node3D" parent="."]
+
+[node name="CameraJoint" type="SpringArm3D" parent="CameraOrigin"]
+transform = Transform3D(1, 0, 0, 0, 0.901281, 0.433234, 0, -0.433234, 0.901281, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_i0ejr")
+spring_length = 6.0
 script = ExtResource("2_djb4x")
 
-[node name="CameraOrigin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502276, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CameraOrigin"]
-transform = Transform3D(1, 0, 0, 0, 0.880105, 0.47478, 0, -0.47478, 0.880105, 0, 2.54591, 5.37382)
+[node name="Camera3D" type="Camera3D" parent="CameraOrigin/CameraJoint"]
+transform = Transform3D(1, 0, 0, 0, 0.998913, 0.0466186, 0, -0.0466186, 0.998913, 0, -0.0335426, 5.9463)
 current = true
 script = ExtResource("2_60y5j")
 
-[node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/CameraJoint/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 collision_mask = 8
 collide_with_areas = true
