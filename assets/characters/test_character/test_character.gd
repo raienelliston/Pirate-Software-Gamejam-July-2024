@@ -9,18 +9,27 @@ extends CharacterBody3D
 
 var current_rotation: float
 var ray_length = 1000
+var camera_rotate = false
 
 @onready var camera_3d = $CameraOrigin/Camera3D
 @onready var camera_pivot = $CameraOrigin
 
 func _ready() -> void:
 	add_to_group("player_character")
-	if Global.can_camera_rotate:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Global.connect("AllowedCameraRotation", allow_camera_rotation)
 	
+func allow_camera_rotation(can: bool) -> void:
+	print("camera")
+	if can:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		camera_rotate = true
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		camera_rotate = false
+
 func _input(event):
 	if not Global.paused:
-		if event is InputEventMouse:
+		if event is InputEventMouseMotion:
 			if Input.is_action_pressed("mouse_escape"):
 				var mouse_pos = get_viewport().get_mouse_position()
 				var from = camera_3d.project_ray_origin(mouse_pos)
@@ -36,11 +45,11 @@ func _input(event):
 		
 			# Camera Rotation
 			else:
-				if Global.can_camera_rotate:
+				if camera_rotate:
 					rotate_y(deg_to_rad(event.relative.x * camera_rotation_speed))
 					camera_pivot.rotate_x(deg_to_rad(event.relative.y * camera_rotation_speed))
 		# Key based camera rotation
-		if Global.can_camera_rotate:
+		if camera_rotate:
 			rotate_y(deg_to_rad((Input.get_action_strength("camera_left") - Input.get_action_strength("camera_right")) * camera_rotation_speed))
 	
 func _physics_process(delta: float) -> void:
@@ -61,7 +70,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-	
-	
 	
 	move_and_slide()

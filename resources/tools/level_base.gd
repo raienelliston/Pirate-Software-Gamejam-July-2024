@@ -19,7 +19,7 @@ func _process(delta):
 func level_setup():
 
 	# Reset some values
-	Global.can_camera_rotate = false
+	Global.AllowedCameraRotation.emit(false)
 	Global.paused = false
 
 	# Handle Player Spawning
@@ -35,11 +35,11 @@ func level_process():
 	if Input.is_action_just_pressed("pause"):
 		if paused:
 			pause_menu.hide()
-			Global.paused = false
+			Global.unpause()
 			Engine.time_scale = 1
 		else:
 			pause_menu.show()
-			Global.paused = true
+			Global.pause()
 			Engine.time_scale = 0
 		
 		paused = !paused
