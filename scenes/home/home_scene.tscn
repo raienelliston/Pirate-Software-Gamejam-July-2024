@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/home/home_scene.gd" id="1_7k0vo"]
 [ext_resource type="Script" path="res://scenes/home/test_menu_block.gd" id="2_e3ylh"]
 [ext_resource type="PackedScene" uid="uid://cmiimg4av81fy" path="res://scenes/menus/pause_menu.tscn" id="2_hwo00"]
-[ext_resource type="Script" path="res://resources/tools/menu_spawner.gd" id="3_k0813"]
+[ext_resource type="Script" path="res://resources/tools/classes/menu_spawner.gd" id="3_k0813"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0jrgo"]
 size = Vector3(1000, 1, 1000)

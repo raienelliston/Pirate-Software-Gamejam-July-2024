@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dp11by0n57dvp"]
 
 [ext_resource type="Script" path="res://resources/tools/3d_items/3d_item.gd" id="1_sx2s0"]
-[ext_resource type="Script" path="res://resources/tools/finite_state_machine.gd" id="2_nacfm"]
+[ext_resource type="Script" path="res://resources/tools/classes/finite_state_machine.gd" id="2_nacfm"]
 [ext_resource type="Script" path="res://resources/tools/3d_items/3d_idle_state.gd" id="3_guxvc"]
 [ext_resource type="Script" path="res://resources/tools/3d_items/3d_clicked_state.gd" id="4_bub3y"]
 [ext_resource type="Script" path="res://resources/tools/3d_items/3d_dragging_state.gd" id="5_wgiec"]

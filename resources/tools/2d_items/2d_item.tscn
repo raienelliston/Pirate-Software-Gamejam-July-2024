@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://t46rp2st0x6p"]
 
 [ext_resource type="Script" path="res://resources/tools/2d_items/2d_item.gd" id="1_vfnky"]
-[ext_resource type="Script" path="res://resources/tools/finite_state_machine.gd" id="2_go2vl"]
+[ext_resource type="Script" path="res://resources/tools/classes/finite_state_machine.gd" id="2_go2vl"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/2d_clicked_state.gd" id="3_8kq1o"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/2d_dropped_state.gd" id="4_fcdrq"]
 [ext_resource type="Script" path="res://resources/tools/2d_items/drag_FSM/2d_dragging_state.gd" id="5_k8ftm"]

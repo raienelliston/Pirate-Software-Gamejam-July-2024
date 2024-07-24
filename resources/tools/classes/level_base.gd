@@ -33,6 +33,7 @@ func level_setup():
 
 func level_process():
 	if Input.is_action_just_pressed("pause"):
+		print("print")
 		if paused:
 			pause_menu.hide()
 			Global.unpause()
