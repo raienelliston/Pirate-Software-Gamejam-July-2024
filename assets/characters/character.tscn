@@ -50,3 +50,4 @@ collision_mask = 8
 collide_with_areas = true
 
 [node name="InteractionManager" parent="." instance=ExtResource("4_x8xct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23576, -1.09369, 0)
