@@ -13,6 +13,8 @@ func _ready():
 	Global.connect("player_node_id", connect_player)
 	Global.connect("RegisteredArea", register_area)
 	Global.connect("UnregisteredArea", unregister_area)
+	
+	InputHandler.add_pressed_input_event("primary_action", [can_interact], interact)
 
 func connect_player(id):
 	player = instance_from_id(id)
@@ -34,6 +36,19 @@ func _input(event):
 				active_index = 0
 			else:
 				active_index += 1
+
+func can_interact():
+	return Global.can_interact
+
+func interact():
+	if active_areas.size() > 0:
+		Global.can_interact = false
+		interaction_text.hide()
+		
+		await active_areas[active_index].interact.call()
+		
+		Global.can_interact = true
+		interaction_text.show()
 
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)

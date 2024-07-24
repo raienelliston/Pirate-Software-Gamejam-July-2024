@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmiimg4av81fy"]
+[gd_scene load_steps=3 format=3 uid="uid://cmiimg4av81fy"]
 
 [ext_resource type="Script" path="res://scenes/menus/pause_menu.gd" id="1_7rg7y"]
+[ext_resource type="PackedScene" uid="uid://dflma8xi0jged" path="res://scenes/menus/settings_menu.tscn" id="2_wcsbb"]
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3
@@ -37,6 +38,9 @@ text = "Settings"
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+
+[node name="Settings Menu" parent="." instance=ExtResource("2_wcsbb")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
