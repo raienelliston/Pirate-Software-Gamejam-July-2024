@@ -13,7 +13,7 @@
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_i0ejr"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" groups=["player"]]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["player_character"]]
 collision_layer = 129
 script = ExtResource("1_cshi1")
 

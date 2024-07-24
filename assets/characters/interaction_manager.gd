@@ -7,8 +7,13 @@ var active_index := -1
 @onready var interaction_name = $Sprite3D/SubViewport/VBoxContainer/InteractionName
 @onready var interaction_description = $Sprite3D/SubViewport/VBoxContainer/InteractionDescription
 @onready var tooltip = $Sprite3D/SubViewport/VBoxContainer/Tooltip
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player: Node3D
 
+func _ready():
+	Global.connect("player_node_id", connect_player)
+
+func connect_player(id):
+	player = instance_from_id(id)
 
 func _input(event):
 	if Global.can_interact:
@@ -45,8 +50,8 @@ func _process(delta):
 		if active_areas.size() > 1:
 			tooltip_text += ", {secondary} to swap actions"
 			
-		interaction_name = active_areas[active_index].interaction_name
-		interaction_description = active_areas[active_index].interaction_description
+		interaction_name.text = active_areas[active_index].interaction_name
+		interaction_description.text = active_areas[active_index].interaction_description
 		tooltip_text = tooltip_text.format({"primary": "Primary", "secondary": "Secondary"})
 		tooltip.text = tooltip_text
 	else:

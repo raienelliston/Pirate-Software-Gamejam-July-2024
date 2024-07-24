@@ -3,6 +3,7 @@ extends Node
 signal PrimaryClick(Vector3)
 signal MouseCoordinates
 signal AllowedCameraRotation(bool)
+signal player_node_id(String)
 
 var scene_name: String
 var paused: bool = false

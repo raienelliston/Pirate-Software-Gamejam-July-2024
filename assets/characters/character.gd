@@ -17,6 +17,7 @@ var camera_rotate = false
 func _ready() -> void:
 	add_to_group("player_character")
 	Global.connect("AllowedCameraRotation", allow_camera_rotation)
+	Global.player_node_id.emit(get_instance_id())
 	
 func allow_camera_rotation(can: bool) -> void:
 	print("camera")

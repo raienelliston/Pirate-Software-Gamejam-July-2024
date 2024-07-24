@@ -22,12 +22,9 @@ offset_bottom = 77.0
 
 [node name="InteractionName" type="Label" parent="Sprite3D/SubViewport/VBoxContainer"]
 layout_mode = 2
-text = "Name"
 
 [node name="InteractionDescription" type="Label" parent="Sprite3D/SubViewport/VBoxContainer"]
 layout_mode = 2
-text = "Description"
 
 [node name="Tooltip" type="Label" parent="Sprite3D/SubViewport/VBoxContainer"]
 layout_mode = 2
-text = "Test"

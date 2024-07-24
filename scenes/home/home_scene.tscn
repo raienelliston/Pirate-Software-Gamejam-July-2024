@@ -20,8 +20,8 @@ albedo_color = Color(1, 0, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_xw4hp"]
 material = SubResource("StandardMaterial3D_icjpp")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ndh65"]
-size = Vector3(5.96191, 6.85376, 13.1407)
+[sub_resource type="SphereShape3D" id="SphereShape3D_rhb5g"]
+radius = 2.0
 
 [node name="Home" type="Node3D" node_paths=PackedStringArray("defualt_spawn", "pause_menu")]
 script = ExtResource("1_7k0vo")
@@ -69,10 +69,10 @@ menu = ExtResource("2_hwo00")
 visible = false
 
 [node name="InteractionArea" parent="." instance=ExtResource("5_ttmdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -5)
+interaction_name = "Test"
+interaction_description = "Testing"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0503, 3.22824, 11.0723)
-shape = SubResource("BoxShape3D_ndh65")
+shape = SubResource("SphereShape3D_rhb5g")
 
 [connection signal="input_event" from="TestMenuBlock" to="TestMenuBlock" method="_on_input_event"]
