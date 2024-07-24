@@ -38,11 +38,9 @@ func level_process():
 	if Input.is_action_just_pressed("pause"):
 		print("print")
 		if paused:
-			pause_menu.hide()
 			Global.unpause()
 			Engine.time_scale = 1
 		else:
-			pause_menu.show()
 			Global.pause()
 			Engine.time_scale = 0
 		

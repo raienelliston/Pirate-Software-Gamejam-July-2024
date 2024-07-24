@@ -14,5 +14,4 @@ func onSceneChange(scenetype: SceneBase.SceneTypes):
 	elif scenetype == SceneBase.SceneTypes.DUNGEON:
 		UI = DUNGEON_UI.instantiate()
 	
-	UI.hide()
 	get_parent().add_child(UI)

@@ -11,6 +11,8 @@ var current_rotation: float
 var ray_length = 1000
 var camera_rotate = false
 
+const PAUSE_MENU = preload("res://scenes/menus/pause_menu.tscn")
+
 @onready var camera_3d = $CameraOrigin/Camera3D
 @onready var camera_pivot = $CameraOrigin
 
@@ -31,7 +33,7 @@ func allow_camera_rotation(can: bool) -> void:
 func _input(event):
 	if not Global.paused:
 		if event is InputEventMouseMotion:
-			if camera_rotate:
+			if not camera_rotate:
 				#var mouse_pos = get_viewport().get_mouse_position()
 				#var from = camera_3d.project_ray_origin(mouse_pos)
 				#var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
@@ -46,15 +48,19 @@ func _input(event):
 				pass
 			# Camera Rotation
 			else:
-				if camera_rotate:
-					rotate_y(deg_to_rad(0 - event.relative.x * camera_rotation_speed))
-					camera_pivot.rotate_x(deg_to_rad(event.relative.y * camera_rotation_speed))
+				rotate_y(deg_to_rad(0 - event.relative.x * camera_rotation_speed))
+				camera_pivot.rotate_x(deg_to_rad(event.relative.y * camera_rotation_speed))
 		# Key based camera rotation
 		if camera_rotate:
 			rotate_y(deg_to_rad((Input.get_action_strength("camera_left") - Input.get_action_strength("camera_right")) * camera_rotation_speed))
 			
 		if event.is_action_pressed("free_camera"):
 			pass
+	
+		if event.is_action_pressed("pause"):
+			var menu = PAUSE_MENU.instantiate()
+			self.add_child(menu)
+		
 	
 func _physics_process(delta: float) -> void:
 	

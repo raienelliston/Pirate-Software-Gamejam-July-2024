@@ -29,7 +29,7 @@ radius = 2.0
 script = ExtResource("1_7k0vo")
 defualt_spawn = NodePath("Spawns/GameStart")
 spawn_name = "GameStart"
-pause_menu = NodePath("Pause Menu")
+pause_menu = NodePath("")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140831, -0.314819, -0.0447693)
@@ -66,9 +66,6 @@ script = ExtResource("3_k0813")
 menu = ExtResource("2_hwo00")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Pause Menu" parent="." instance=ExtResource("2_hwo00")]
-visible = false
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("interaction_nodes") instance=ExtResource("5_ttmdr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622559, 1.88461, -0.0113525)
