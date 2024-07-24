@@ -6,6 +6,7 @@ signal AllowedCameraRotation(bool)
 signal player_node_id(String)
 signal RegisteredArea(Area3D)
 signal UnregisteredArea(Area3D)
+signal SceneChanged(SceneTypes)
 
 var scene_name: String
 var paused: bool = false

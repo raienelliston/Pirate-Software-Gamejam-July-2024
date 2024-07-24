@@ -31,7 +31,7 @@ func allow_camera_rotation(can: bool) -> void:
 func _input(event):
 	if not Global.paused:
 		if event is InputEventMouseMotion:
-			if Input.is_action_pressed("free_camera"):
+			if camera_rotate:
 				#var mouse_pos = get_viewport().get_mouse_position()
 				#var from = camera_3d.project_ray_origin(mouse_pos)
 				#var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
@@ -52,6 +52,9 @@ func _input(event):
 		# Key based camera rotation
 		if camera_rotate:
 			rotate_y(deg_to_rad((Input.get_action_strength("camera_left") - Input.get_action_strength("camera_right")) * camera_rotation_speed))
+			
+		if event.is_action_pressed("free_camera"):
+			pass
 	
 func _physics_process(delta: float) -> void:
 	

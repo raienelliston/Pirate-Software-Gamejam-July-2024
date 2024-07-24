@@ -1,9 +1,12 @@
-class_name LevelBase
+class_name SceneBase
 extends Node3D
+
+enum SceneTypes {GENERAL, DUNGEON}
 
 @export var defualt_spawn: Node3D
 @export var spawn_name: String
 @export var pause_menu: Node
+@export var scene_type: SceneTypes
 
 var paused: bool = false
 const TEST_CHARACTER = preload("res://assets/characters/character.tscn")
@@ -20,6 +23,7 @@ func level_setup():
 	# Reset some values
 	Global.AllowedCameraRotation.emit(false)
 	Global.paused = false
+	Global.SceneChanged.emit(scene_type)
 
 	# Handle Player Spawning
 	var spawn_name = Global.getSceneSpawn()

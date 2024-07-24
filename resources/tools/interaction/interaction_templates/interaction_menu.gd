@@ -1,6 +1,8 @@
 class_name InteractionMenu
 extends Node
 
+
+
 @export var menu: PackedScene
 @export var obaque_background: bool = false
 @export var pasue_world: bool = true
