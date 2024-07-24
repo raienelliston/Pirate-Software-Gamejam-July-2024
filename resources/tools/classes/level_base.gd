@@ -6,7 +6,7 @@ extends Node3D
 @export var pause_menu: Node
 
 var paused: bool = false
-const TEST_CHARACTER = preload("res://assets/characters/test_character/test_character.tscn")
+const TEST_CHARACTER = preload("res://assets/characters/character.tscn")
 
 @onready var spawns = $Spawns
 
@@ -17,7 +17,6 @@ func _process(delta):
 	level_process()
 	
 func level_setup():
-
 	# Reset some values
 	Global.AllowedCameraRotation.emit(false)
 	Global.paused = false

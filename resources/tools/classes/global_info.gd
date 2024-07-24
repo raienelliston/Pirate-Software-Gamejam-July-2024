@@ -6,6 +6,7 @@ signal AllowedCameraRotation(bool)
 
 var scene_name: String
 var paused: bool = false
+var can_interact = true
 
 var paused_state
 
@@ -17,8 +18,10 @@ func setSceneSpawn(name: String):
 
 func pause():
 	paused = true
+	can_interact = false
 	AllowedCameraRotation.emit(false)
 	
 func unpause():
 	paused = false
+	can_interact = true
 	AllowedCameraRotation.emit(true)

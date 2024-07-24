@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://boesbgqrelcby"]
+[gd_scene load_steps=9 format=3 uid="uid://boesbgqrelcby"]
 
-[ext_resource type="Script" path="res://assets/characters/test_character/test_character.gd" id="1_kuodl"]
-[ext_resource type="Script" path="res://assets/characters/test_character/Camera.gd" id="2_60y5j"]
-[ext_resource type="Script" path="res://assets/characters/test_character/CameraJoint.gd" id="2_djb4x"]
+[ext_resource type="Script" path="res://assets/characters/character.gd" id="1_cshi1"]
+[ext_resource type="Script" path="res://assets/characters/CameraJoint.gd" id="2_s67fb"]
+[ext_resource type="Script" path="res://assets/characters/Camera.gd" id="3_e0yx6"]
+[ext_resource type="PackedScene" uid="uid://cu2a1wb530u1c" path="res://assets/characters/interaction_manager.tscn" id="4_x8xct"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uh6j"]
 
@@ -12,9 +13,9 @@
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_i0ejr"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["player"]]
 collision_layer = 129
-script = ExtResource("1_kuodl")
+script = ExtResource("1_cshi1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8uh6j")
@@ -36,14 +37,16 @@ anim_player = NodePath("../AnimationPlayer")
 transform = Transform3D(1, 0, 0, 0, 0.901281, 0.433234, 0, -0.433234, 0.901281, 0, 0, 0)
 shape = SubResource("SeparationRayShape3D_i0ejr")
 spring_length = 6.0
-script = ExtResource("2_djb4x")
+script = ExtResource("2_s67fb")
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin/CameraJoint"]
 transform = Transform3D(1, 0, 0, 0, 0.998913, 0.0466186, 0, -0.0466186, 0.998913, 0, -0.0335426, 5.9463)
 current = true
-script = ExtResource("2_60y5j")
+script = ExtResource("3_e0yx6")
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/CameraJoint/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 collision_mask = 8
 collide_with_areas = true
+
+[node name="InteractionManager" parent="." instance=ExtResource("4_x8xct")]

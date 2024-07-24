@@ -17,10 +17,11 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 Global="*res://resources/tools/classes/global_info.gd"
-CharacterCamera="res://assets/characters/test_character/Camera.gd"
+CharacterCamera="res://assets/characters/Camera.gd"
 TargetLocator="*res://resources/tools/targeters/target_locator.gd"
 ArrowTargeter="*res://resources/tools/targeters/arrow_targeter.gd"
 CameraInfo="*res://resources/tools/camera_info.gd"
+InteractionManager="*res://assets/characters/interaction_manager.gd"
 
 [input]
 
@@ -68,6 +69,10 @@ camera_right={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
 ]
+}
+interact={
+"deadzone": 0.5,
+"events": []
 }
 
 [layer_names]

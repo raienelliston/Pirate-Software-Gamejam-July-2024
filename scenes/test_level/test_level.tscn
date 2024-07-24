@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://vx2uab7f1jk5"]
 
-[ext_resource type="PackedScene" uid="uid://boesbgqrelcby" path="res://assets/characters/test_character/test_character.tscn" id="1_po36l"]
+[ext_resource type="PackedScene" uid="uid://boesbgqrelcby" path="res://assets/characters/character.tscn" id="1_po36l"]
 [ext_resource type="PackedScene" uid="uid://c3vsdx7xfjfh0" path="res://scenes/ui/dungeon_ui/dungeon_ui.tscn" id="2_io3s0"]
 [ext_resource type="PackedScene" uid="uid://yltc7rn30eno" path="res://assets/entities/enemies/test_enemy/test_enemy.tscn" id="3_eei3m"]
 [ext_resource type="PackedScene" uid="uid://7620cuisjd33" path="res://resources/tools/targeters/target_locator.tscn" id="4_xfvct"]
