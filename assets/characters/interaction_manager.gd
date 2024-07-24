@@ -1,8 +1,9 @@
 extends Node3D
 
 var active_areas := []
-var active_index := 0
+var active_index := -1
 
+@onready var interaction_text = $Sprite3D/SubViewport/VBoxContainer
 @onready var interaction_name = $Sprite3D/SubViewport/VBoxContainer/InteractionName
 @onready var interaction_description = $Sprite3D/SubViewport/VBoxContainer/InteractionDescription
 @onready var tooltip = $Sprite3D/SubViewport/VBoxContainer/Tooltip
@@ -10,11 +11,22 @@ var active_index := 0
 
 
 func _input(event):
-	if event.is_action_pressed("secondary_action"):
-		if active_index == active_areas.size() - 1:
-			active_index = 0
-		else:
-			active_index += 1
+	if Global.can_interact:
+		if event.is_action_pressed("primary_action"):
+			if active_areas.size() > 0:
+				Global.can_interact = false
+				interaction_text.hide()
+				
+				await active_areas[active_index].interact.call()
+				
+				Global.can_interact = true
+				interaction_text.show()
+				
+		if event.is_action_pressed("secondary_action"):
+			if active_index == active_areas.size() - 1:
+				active_index = 0
+			else:
+				active_index += 1
 
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/home/test_menu_block.gd" id="2_e3ylh"]
 [ext_resource type="PackedScene" uid="uid://cmiimg4av81fy" path="res://scenes/menus/pause_menu.tscn" id="2_hwo00"]
 [ext_resource type="Script" path="res://resources/tools/classes/menu_spawner.gd" id="3_k0813"]
-[ext_resource type="Script" path="res://resources/tools/classes/interaction_area.gd" id="5_7jyel"]
+[ext_resource type="PackedScene" uid="uid://c0p42o4tmfqqe" path="res://resources/tools/interaction_area/interaction_area.tscn" id="5_ttmdr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0jrgo"]
 size = Vector3(1000, 1, 1000)
@@ -68,14 +68,11 @@ menu = ExtResource("2_hwo00")
 [node name="Pause Menu" parent="." instance=ExtResource("2_hwo00")]
 visible = false
 
-[node name="InteractionArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.56933, 3.51962, 0.00195313)
-script = ExtResource("5_7jyel")
-interaction_name = "Test"
-interaction_description = "This is a test"
+[node name="InteractionArea" parent="." instance=ExtResource("5_ttmdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48096, 0.708618, 6.07037)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0503, 3.22824, 11.0723)
 shape = SubResource("BoxShape3D_ndh65")
 
 [connection signal="input_event" from="TestMenuBlock" to="TestMenuBlock" method="_on_input_event"]
