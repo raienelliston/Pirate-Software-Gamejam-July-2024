@@ -15,27 +15,10 @@ func _ready():
 	Global.connect("UnregisteredArea", unregister_area)
 	
 	InputHandler.add_pressed_input_event("primary_action", [can_interact], interact)
+	InputHandler.add_pressed_input_event("secondary_action", [can_interact], swap_interaction)
 
 func connect_player(id):
 	player = instance_from_id(id)
-
-func _input(event):
-	if Global.can_interact:
-		if event.is_action_pressed("primary_action"):
-			if active_areas.size() > 0:
-				Global.can_interact = false
-				interaction_text.hide()
-				
-				await active_areas[active_index].interact.call()
-				
-				Global.can_interact = true
-				interaction_text.show()
-				
-		if event.is_action_pressed("secondary_action"):
-			if active_index == active_areas.size() - 1:
-				active_index = 0
-			else:
-				active_index += 1
 
 func can_interact():
 	return Global.can_interact
@@ -49,6 +32,12 @@ func interact():
 		
 		Global.can_interact = true
 		interaction_text.show()
+		
+func swap_interaction():
+	if active_index == active_areas.size() - 1:
+		active_index = 0
+	else:
+		active_index += 1
 
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)
@@ -67,6 +56,9 @@ func _process(delta):
 		if active_areas.size() > 1:
 			tooltip_text += ", {secondary} to swap actions"
 			
+		if active_index > active_areas.size() - 1:
+			active_index = active_areas.size() - 1
+		
 		interaction_name.text = active_areas[active_index].interaction_name
 		interaction_description.text = active_areas[active_index].interaction_description
 		tooltip_text = tooltip_text.format({"primary": "Primary", "secondary": "Secondary"})

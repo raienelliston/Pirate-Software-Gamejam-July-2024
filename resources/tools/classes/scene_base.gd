@@ -7,6 +7,7 @@ enum SceneTypes {GENERAL, DUNGEON}
 @export var spawn_name: String
 @export var pause_menu: Node
 @export var scene_type: SceneTypes
+@export var fixed_camera: bool
 
 var paused: bool = false
 const TEST_CHARACTER = preload("res://assets/characters/character.tscn")
@@ -21,7 +22,7 @@ func _process(delta):
 	
 func level_setup():
 	# Reset some values
-	Global.AllowedCameraRotation.emit(false)
+	Global.ToggledCameraRotation.emit(false)
 	Global.paused = false
 	Global.SceneChanged.emit(scene_type)
 
@@ -33,6 +34,8 @@ func level_setup():
 		var spawn_nodes = get_children()
 	else:
 		character.global_position = defualt_spawn.global_position
+
+	Global.fixed_camera = fixed_camera
 
 func level_process():
 	if Input.is_action_just_pressed("pause"):
