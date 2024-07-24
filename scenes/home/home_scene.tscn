@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvwxwj70pj065"]
+[gd_scene load_steps=10 format=3 uid="uid://cvwxwj70pj065"]
 
 [ext_resource type="Script" path="res://scenes/home/home_scene.gd" id="1_7k0vo"]
+[ext_resource type="Script" path="res://scenes/home/test_menu_block.gd" id="2_e3ylh"]
+[ext_resource type="PackedScene" uid="uid://cmiimg4av81fy" path="res://scenes/menus/pause_menu.tscn" id="2_hwo00"]
+[ext_resource type="Script" path="res://resources/tools/menu_spawner.gd" id="3_k0813"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0jrgo"]
 size = Vector3(1000, 1, 1000)
@@ -10,12 +13,17 @@ size = Vector3(1000, 1, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwoui"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_xw4hp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icjpp"]
+albedo_color = Color(1, 0, 1, 1)
 
-[node name="Home" type="Node3D" node_paths=PackedStringArray("defualt_spawn")]
+[sub_resource type="BoxMesh" id="BoxMesh_xw4hp"]
+material = SubResource("StandardMaterial3D_icjpp")
+
+[node name="Home" type="Node3D" node_paths=PackedStringArray("defualt_spawn", "pause_menu")]
 script = ExtResource("1_7k0vo")
 defualt_spawn = NodePath("Spawns/GameStart")
 spawn_name = "GameStart"
+pause_menu = NodePath("Pause Menu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140831, -0.314819, -0.0447693)
@@ -36,14 +44,24 @@ mesh = SubResource("BoxMesh_0jrgo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ground"]
 shape = SubResource("BoxShape3D_rl611")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09659, 2.93317, 0)
+[node name="TestMenuBlock" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09659, 1.5058, 0)
+script = ExtResource("2_e3ylh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.73754, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMenuBlock"]
 shape = SubResource("BoxShape3D_xwoui")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMenuBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0234776, 0, -0.0193539)
 mesh = SubResource("BoxMesh_xw4hp")
 
+[node name="MenuSpawner" type="Node" parent="TestMenuBlock"]
+script = ExtResource("3_k0813")
+menu = ExtResource("2_hwo00")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_hwo00")]
+visible = false
+
+[connection signal="input_event" from="TestMenuBlock" to="TestMenuBlock" method="_on_input_event"]

@@ -5,6 +5,7 @@ signal MouseCoordinates
 
 var scene_name: String
 var can_camera_rotate: bool
+var paused: bool = false
 
 func getSceneSpawn() -> String:
 	return scene_name

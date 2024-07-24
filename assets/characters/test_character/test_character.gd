@@ -19,28 +19,29 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _input(event):
-	if event is InputEventMouse:
-		if Input.is_action_pressed("mouse_escape"):
-			var mouse_pos = get_viewport().get_mouse_position()
-			var from = camera_3d.project_ray_origin(mouse_pos)
-			var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
-			var space = get_world_3d().direct_space_state
-			var ray_query = PhysicsRayQueryParameters3D.create(from, to)
-			ray_query.collision_mask = 1
-			ray_query.collide_with_bodies = true
-			ray_query.collide_with_areas = false
-			var raycast_result = space.intersect_ray(ray_query)
-			if not raycast_result == {}:
-				Global.emit_signal("MouseCoordinates", raycast_result["position"])
-	
-		# Camera Rotation
-		else:
-			if Global.can_camera_rotate:
-				rotate_y(deg_to_rad(event.relative.x * camera_rotation_speed))
-				camera_pivot.rotate_x(deg_to_rad(event.relative.y * camera_rotation_speed))
-	# Key based camera rotation
-	if Global.can_camera_rotate:
-		rotate_y(deg_to_rad((Input.get_action_strength("camera_left") - Input.get_action_strength("camera_right")) * camera_rotation_speed))
+	if not Global.paused:
+		if event is InputEventMouse:
+			if Input.is_action_pressed("mouse_escape"):
+				var mouse_pos = get_viewport().get_mouse_position()
+				var from = camera_3d.project_ray_origin(mouse_pos)
+				var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
+				var space = get_world_3d().direct_space_state
+				var ray_query = PhysicsRayQueryParameters3D.create(from, to)
+				ray_query.collision_mask = 1
+				ray_query.collide_with_bodies = true
+				ray_query.collide_with_areas = false
+				var raycast_result = space.intersect_ray(ray_query)
+				if not raycast_result == {}:
+					Global.emit_signal("MouseCoordinates", raycast_result["position"])
+		
+			# Camera Rotation
+			else:
+				if Global.can_camera_rotate:
+					rotate_y(deg_to_rad(event.relative.x * camera_rotation_speed))
+					camera_pivot.rotate_x(deg_to_rad(event.relative.y * camera_rotation_speed))
+		# Key based camera rotation
+		if Global.can_camera_rotate:
+			rotate_y(deg_to_rad((Input.get_action_strength("camera_left") - Input.get_action_strength("camera_right")) * camera_rotation_speed))
 	
 func _physics_process(delta: float) -> void:
 	
@@ -60,6 +61,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+	
 	
 	
 	move_and_slide()
