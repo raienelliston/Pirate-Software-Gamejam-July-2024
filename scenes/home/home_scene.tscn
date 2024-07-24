@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvwxwj70pj065"]
+[gd_scene load_steps=6 format=3 uid="uid://cvwxwj70pj065"]
 
 [ext_resource type="Script" path="res://scenes/home/home_scene.gd" id="1_7k0vo"]
 
@@ -8,19 +8,14 @@ size = Vector3(1000, 1, 1000)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rl611"]
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwoui"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xw4hp"]
+
 [node name="Home" type="Node3D" node_paths=PackedStringArray("defualt_spawn")]
 script = ExtResource("1_7k0vo")
 defualt_spawn = NodePath("Spawns/GameStart")
 spawn_name = "GameStart"
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_0jrgo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_rl611")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140831, -0.314819, -0.0447693)
@@ -29,3 +24,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140831, -0.314819, -0.04476
 
 [node name="GameStart" type="Node3D" parent="Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89633, 24.1422, -5.29034)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Ground"]
+mesh = SubResource("BoxMesh_0jrgo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ground"]
+shape = SubResource("BoxShape3D_rl611")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09659, 2.93317, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.73754, 0)
+shape = SubResource("BoxShape3D_xwoui")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_xw4hp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
