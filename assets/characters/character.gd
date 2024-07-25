@@ -48,7 +48,7 @@ func _unhandled_input(event):
 	
 	if not Global.paused:
 		if event is InputEventMouseMotion:
-			if not camera_rotate:
+			if not Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 				var mouse_pos = get_viewport().get_mouse_position()
 				var from = camera_3d.project_ray_origin(mouse_pos)
 				var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
@@ -92,12 +92,11 @@ func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		rotate_y(y_rotation - rotation.y)
+		camera_pivot.rotate_y(y_rotation - rotation.y)
+		y_rotation = rotation.y
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		print(direction)
-		var angle = atan2(direction.z, direction.x) - atan2(-1, 0)
-		camera_pivot.look_at(angle)
-		
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
