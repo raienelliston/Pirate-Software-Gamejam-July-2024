@@ -21,7 +21,6 @@ func _ready() -> void:
 	Global.connect("AllowedCameraRotation", allow_camera_rotation)
 	Global.player_node_id.emit(get_instance_id())
 	
-	InputHandler.add_pressed_input_event("pause", [check_if_not_paused], pause)
 	
 func allow_camera_rotation(toggle) -> void:
 	print("camera")
@@ -33,6 +32,12 @@ func allow_camera_rotation(toggle) -> void:
 		camera_rotate = false
 
 func _input(event):
+	
+	if event.is_action_pressed("pause") and Global.paused:
+		var menu = PAUSE_MENU.instantiate()
+		self.add_child(menu)
+		event.handled = true
+	
 	if not Global.paused:
 		if event is InputEventMouseMotion:
 			if not camera_rotate:
@@ -58,14 +63,6 @@ func _input(event):
 			
 		if event.is_action_pressed("free_camera"):
 			pass
-	
-func check_if_not_paused():
-	return Global.paused
-	
-func pause():
-	var menu = PAUSE_MENU.instantiate()
-	self.add_child(menu)
-		
 	
 func _physics_process(delta: float) -> void:
 	

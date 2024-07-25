@@ -14,30 +14,27 @@ func _ready():
 	Global.connect("RegisteredArea", register_area)
 	Global.connect("UnregisteredArea", unregister_area)
 	
-	InputHandler.add_pressed_input_event("primary_action", [can_interact], interact)
-	InputHandler.add_pressed_input_event("secondary_action", [can_interact], swap_interaction)
+func _input(event):
+	if Global.can_interact:
+		if event.is_action_pressed("primary_action"):
+				if active_areas.size() > 0:
+					Global.can_interact = false
+					interaction_text.hide()
+					
+					await active_areas[active_index].interact.call()
+					
+					Global.can_interact = true
+					interaction_text.show()
+					event.handled = true
+		if event.is_action_pressed("secondary_action"):
+			if active_index == active_areas.size() - 1:
+				active_index = 0
+			else:
+				active_index += 1
+			event.handled = true
 
 func connect_player(id):
 	player = instance_from_id(id)
-
-func can_interact():
-	return Global.can_interact
-
-func interact():
-	if active_areas.size() > 0:
-		Global.can_interact = false
-		interaction_text.hide()
-		
-		await active_areas[active_index].interact.call()
-		
-		Global.can_interact = true
-		interaction_text.show()
-		
-func swap_interaction():
-	if active_index == active_areas.size() - 1:
-		active_index = 0
-	else:
-		active_index += 1
 
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)
