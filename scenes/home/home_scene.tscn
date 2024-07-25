@@ -25,11 +25,10 @@ material = SubResource("StandardMaterial3D_icjpp")
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhb5g"]
 radius = 2.0
 
-[node name="Home" type="Node3D" node_paths=PackedStringArray("defualt_spawn", "pause_menu")]
+[node name="Home" type="Node3D" node_paths=PackedStringArray("defualt_spawn")]
 script = ExtResource("1_7k0vo")
 defualt_spawn = NodePath("Spawns/GameStart")
 spawn_name = "GameStart"
-pause_menu = NodePath("")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140831, -0.314819, -0.0447693)

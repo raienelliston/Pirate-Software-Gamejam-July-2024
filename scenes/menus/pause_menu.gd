@@ -8,11 +8,12 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("pause"):
 		Global.unpause()
-		event.handled = true
+		get_viewport().set_input_as_handled()
 		queue_free()
 
 func _on_resume_button_pressed():
 		Global.unpause()
+		get_viewport().set_input_as_handled()
 		queue_free()
 
 func _on_settings_button_pressed():

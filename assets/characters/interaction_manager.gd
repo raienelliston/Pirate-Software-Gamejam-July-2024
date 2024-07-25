@@ -25,13 +25,13 @@ func _input(event):
 					
 					Global.can_interact = true
 					interaction_text.show()
-					event.handled = true
+					
 		if event.is_action_pressed("secondary_action"):
 			if active_index == active_areas.size() - 1:
 				active_index = 0
 			else:
 				active_index += 1
-			event.handled = true
+			get_viewport().set_input_as_handled()
 
 func connect_player(id):
 	player = instance_from_id(id)

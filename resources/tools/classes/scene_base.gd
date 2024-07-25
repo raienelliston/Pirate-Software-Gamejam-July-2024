@@ -36,6 +36,7 @@ func level_setup():
 		character.global_position = defualt_spawn.global_position
 
 	Global.fixed_camera = fixed_camera
+	Global.ToggledCameraRotation.emit(!fixed_camera)
 
 func level_process():
 	if Input.is_action_just_pressed("pause"):

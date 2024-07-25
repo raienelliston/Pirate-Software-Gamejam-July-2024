@@ -36,7 +36,7 @@ func _input(event):
 	if event.is_action_pressed("pause") and Global.paused:
 		var menu = PAUSE_MENU.instantiate()
 		self.add_child(menu)
-		event.handled = true
+		get_viewport().set_input_as_handled()
 	
 	if not Global.paused:
 		if event is InputEventMouseMotion:
