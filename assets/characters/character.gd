@@ -5,16 +5,24 @@ extends CharacterBody3D
 @export var time_to_apex := 0.7
 @export var time_to_fall := 0.4
 @export var gravity := 50.0
+
+@export_group("Camera Properites")
 @export var camera_rotation_speed := 0.5
+@export var max_x_rotation := 50.0
+@export var min_x_rotation := -55.0
 
 var current_rotation: float
 var ray_length = 1000
 var camera_rotate = false
 
+var x_rotation: float = 0
+var y_rotation: float = 0
+
 const PAUSE_MENU = preload("res://scenes/menus/pause_menu.tscn")
 
 @onready var camera_3d = $CameraOrigin/Camera3D
 @onready var camera_pivot = $CameraOrigin
+@onready var camera_joint = $CameraOrigin/CameraJoint
 
 func _ready() -> void:
 	add_to_group("player_character")
@@ -55,8 +63,15 @@ func _unhandled_input(event):
 				pass
 			# Camera Rotation
 			else:
-				rotate_y(deg_to_rad(0 - event.relative.x * camera_rotation_speed))
-				camera_pivot.rotate_x(deg_to_rad(event.relative.y * camera_rotation_speed))
+				var rotate_x_rads = clamp(deg_to_rad(-event.relative.y * camera_rotation_speed), deg_to_rad(min_x_rotation) - x_rotation, deg_to_rad(max_x_rotation) - x_rotation)
+				camera_joint.rotate_x(rotate_x_rads)
+				x_rotation += rotate_x_rads
+				var rotate_y_rads = deg_to_rad(0 - event.relative.x * camera_rotation_speed)
+				camera_pivot.rotate_y(rotate_y_rads)
+				y_rotation += rotate_y_rads
+				if y_rotation > 360:
+					y_rotation -= 360
+		
 		# Key based camera rotation
 		if camera_rotate:
 			rotate_y(deg_to_rad((Input.get_action_strength("camera_left") - Input.get_action_strength("camera_right")) * camera_rotation_speed))
@@ -79,6 +94,10 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
+		print(direction)
+		var angle = atan2(direction.z, direction.x) - atan2(-1, 0)
+		camera_pivot.look_at(angle)
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
