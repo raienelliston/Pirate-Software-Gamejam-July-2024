@@ -14,7 +14,7 @@ func _ready():
 	Global.connect("RegisteredArea", register_area)
 	Global.connect("UnregisteredArea", unregister_area)
 	
-func _input(event):
+func _unhandled_input(event):
 	if Global.can_interact:
 		if event.is_action_pressed("primary_action"):
 				if active_areas.size() > 0:

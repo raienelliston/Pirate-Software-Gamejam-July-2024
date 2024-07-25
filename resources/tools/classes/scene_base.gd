@@ -17,9 +17,6 @@ const TEST_CHARACTER = preload("res://assets/characters/character.tscn")
 func _ready():
 	level_setup()
 	
-func _process(delta):
-	level_process()
-	
 func level_setup():
 	# Reset some values
 	Global.ToggledCameraRotation.emit(false)
@@ -37,15 +34,14 @@ func level_setup():
 
 	Global.fixed_camera = fixed_camera
 	Global.ToggledCameraRotation.emit(!fixed_camera)
+	Global.connect("Paused", pause_scene)
 
-func level_process():
-	if Input.is_action_just_pressed("pause"):
+func pause_scene(status: bool):
+	if status:
 		print("print")
 		if paused:
-			Global.unpause()
 			Engine.time_scale = 1
 		else:
-			Global.pause()
 			Engine.time_scale = 0
 		
 		paused = !paused

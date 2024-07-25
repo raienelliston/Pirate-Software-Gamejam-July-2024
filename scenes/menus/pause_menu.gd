@@ -5,7 +5,7 @@ extends Control
 func _ready():
 	Global.pause()
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		Global.unpause()
 		get_viewport().set_input_as_handled()

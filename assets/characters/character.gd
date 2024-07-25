@@ -18,7 +18,7 @@ const PAUSE_MENU = preload("res://scenes/menus/pause_menu.tscn")
 
 func _ready() -> void:
 	add_to_group("player_character")
-	Global.connect("AllowedCameraRotation", allow_camera_rotation)
+	Global.connect("ToggledCameraRotation", allow_camera_rotation)
 	Global.player_node_id.emit(get_instance_id())
 	
 	
@@ -31,9 +31,9 @@ func allow_camera_rotation(toggle) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		camera_rotate = false
 
-func _input(event):
+func _unhandled_input(event):
 	
-	if event.is_action_pressed("pause") and Global.paused:
+	if event.is_action_pressed("pause") and not Global.paused:
 		var menu = PAUSE_MENU.instantiate()
 		self.add_child(menu)
 		get_viewport().set_input_as_handled()
@@ -41,17 +41,17 @@ func _input(event):
 	if not Global.paused:
 		if event is InputEventMouseMotion:
 			if not camera_rotate:
-				#var mouse_pos = get_viewport().get_mouse_position()
-				#var from = camera_3d.project_ray_origin(mouse_pos)
-				#var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
-				#var space = get_world_3d().direct_space_state
-				#var ray_query = PhysicsRayQueryParameters3D.create(from, to)
-				#ray_query.collision_mask = 1
-				#ray_query.collide_with_bodies = true
-				#ray_query.collide_with_areas = false
-				#var raycast_result = space.intersect_ray(ray_query)
-				#if not raycast_result == {}:
-					#Global.emit_signal("MouseCoordinates", raycast_result["position"])
+				var mouse_pos = get_viewport().get_mouse_position()
+				var from = camera_3d.project_ray_origin(mouse_pos)
+				var to = from + camera_3d.project_local_ray_normal(mouse_pos) * ray_length
+				var space = get_world_3d().direct_space_state
+				var ray_query = PhysicsRayQueryParameters3D.create(from, to)
+				ray_query.collision_mask = 1
+				ray_query.collide_with_bodies = true
+				ray_query.collide_with_areas = false
+				var raycast_result = space.intersect_ray(ray_query)
+				if not raycast_result == {}:
+					Global.emit_signal("MouseCoordinates", raycast_result["position"])
 				pass
 			# Camera Rotation
 			else:
